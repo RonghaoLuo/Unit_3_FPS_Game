@@ -12,7 +12,7 @@ public class CharacterMovement : MonoBehaviour
 
         Vector3 sumOfDirections = forwardOrBackwards + leftOrRight;
 
-        _controller.SimpleMove(sumOfDirections);
+        _controller.Move(sumOfDirections * Time.deltaTime);
 
         // doesn't work since there's overwriting
         //_controller.SimpleMove(direction.z * _moveSpeed * transform.forward);

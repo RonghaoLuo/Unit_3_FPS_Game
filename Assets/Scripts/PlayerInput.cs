@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
@@ -6,6 +7,8 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private CharacterMovement _movement;
     [SerializeField] private CharacterRotation _rotation;
     [SerializeField] private CharacterSprint _sprint;
+    [SerializeField] private CharacterJump jump;
+    [SerializeField] private CharacterShooting shooting;
 
     void Start()
     {
@@ -22,16 +25,38 @@ public class PlayerInput : MonoBehaviour
         _lookRotation.x = -Input.GetAxisRaw("Mouse Y");
         _lookRotation.y = Input.GetAxisRaw("Mouse X");
 
-        _movement.MoveCharacter(_moveDirection);
-        _rotation.RotateByAngles(_lookRotation);
-
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (_movement != null)
         {
-            _sprint.StartSprinting();
+            _movement.MoveCharacter(_moveDirection);
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (_rotation != null)
         {
-            _sprint.StopSprinting();
+            _rotation.RotateByAngles(_lookRotation);
+        }
+        if (_sprint != null)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                _sprint.StartSprinting();
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                _sprint.StopSprinting();
+            }
+        }
+        if (jump != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                jump.Jump();
+            }
+        }
+        if (shooting != null)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                shooting.Shoot();
+            }
         }
     }
 }
