@@ -9,12 +9,11 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, 5f);
-        myRigidbody.AddForce(transform.forward * strength, ForceMode.Impulse);
+        myRigidbody.AddForce(transform.forward * strength, ForceMode.VelocityChange);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        //Debug.Log(collision.gameObject);
     }
 }
