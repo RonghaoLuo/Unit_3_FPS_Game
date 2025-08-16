@@ -2,8 +2,7 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    public void OnInteractionHoverEnter()
-    {
-
-    }
+    public void OnInteractionHoverExit();
+    public void OnInteractionHoverEnter();
+    public void OnInteract();
 }

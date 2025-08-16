@@ -9,6 +9,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private CharacterSprint _sprint;
     [SerializeField] private CharacterJump jump;
     [SerializeField] private CharacterShooting shooting;
+    [SerializeField] private PlayerInteract interact;
 
     void Start()
     {
@@ -56,6 +57,13 @@ public class PlayerInput : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 shooting.Shoot();
+            }
+        }
+        if (interact != null)
+        {
+            if (Input.GetKeyDown(KeyCode.F) && interact.currentInteraction != null)
+            {
+                interact.currentInteraction.OnInteract();
             }
         }
     }
