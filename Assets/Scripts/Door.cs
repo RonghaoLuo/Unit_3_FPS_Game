@@ -6,11 +6,21 @@ public class Door : MonoBehaviour
 
     [SerializeField] Animator animator;
 
+    public void OpenDoor()
+    {
+        animator.SetBool("IsOpen", true);
+    }
+
+    public void CloseDoor()
+    {
+        animator.SetBool("IsOpen", false);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (isDoorUnlocked)
         {
-            animator.SetBool("IsOpen", true);
+            OpenDoor();
         }
     }
 
@@ -18,7 +28,7 @@ public class Door : MonoBehaviour
     {
         if (isDoorUnlocked)
         {
-            animator.SetBool("IsOpen", false);
+            CloseDoor();
         }
     }
 }

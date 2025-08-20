@@ -52,7 +52,15 @@ public class PlayerInteract : MonoBehaviour
         {
             currentInteraction = null;
         }
-        
-        
+
+        if (Input.GetKeyDown(KeyCode.F) && currentInteraction != null)
+        {
+            if (currentInteraction is CubeGrab cube)
+            {
+                cube.SetGrabPointOrigin(eyeOrigin);
+            }
+
+            currentInteraction.OnInteract();
+        }
     }
 }

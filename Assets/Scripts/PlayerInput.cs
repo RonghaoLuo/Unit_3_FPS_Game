@@ -59,12 +59,5 @@ public class PlayerInput : MonoBehaviour
                 shooting.Shoot();
             }
         }
-        if (interact != null)
-        {
-            if (Input.GetKeyDown(KeyCode.F) && interact.currentInteraction != null)
-            {
-                interact.currentInteraction.OnInteract();
-            }
-        }
     }
 }

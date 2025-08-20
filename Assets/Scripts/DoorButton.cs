@@ -3,6 +3,9 @@ using UnityEngine;
 public class DoorButton : MonoBehaviour, IInteractable
 {
     [SerializeField] private Door door;
+    [SerializeField] private MeshRenderer buttonRenderer;
+    [SerializeField] private Material hoverEnterMat;
+    [SerializeField] private Material hoverExitMat;
 
     public void OnInteract()
     {
@@ -11,11 +14,11 @@ public class DoorButton : MonoBehaviour, IInteractable
 
     public void OnInteractionHoverEnter()
     {
-        Debug.Log("Press F to interact");
+        buttonRenderer.material = hoverEnterMat;
     }
 
     public void OnInteractionHoverExit()
     {
-        Debug.Log("Exited Door Button");
+        buttonRenderer.material = hoverExitMat;
     }
 }
