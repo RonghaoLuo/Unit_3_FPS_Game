@@ -2,23 +2,19 @@ using UnityEngine;
 
 public class CharacterShooting : MonoBehaviour
 {
-    [SerializeField] private Bullet bulletPrefab;
+    [SerializeField] private BulletPooling poolOfBullets;
     [SerializeField] private Transform weaponTip;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void Shoot()
     {
-        Instantiate(bulletPrefab, weaponTip.position, weaponTip.rotation);
+        //Instantiate(bulletPrefab, weaponTip.position, weaponTip.rotation);
+        Bullet newBullet = poolOfBullets.GetAvailableBullet();
+        newBullet.transform.position = weaponTip.position; ;
+        newBullet.transform.rotation = weaponTip.rotation;
+        
+        newBullet.gameObject.SetActive(true);
+
+        // call the return bullet method in some way
+        //poolOfBullets.ReturnBullet(newBullet);
     }
 }
