@@ -9,12 +9,16 @@ public class CharacterShooting : MonoBehaviour
     {
         //Instantiate(bulletPrefab, weaponTip.position, weaponTip.rotation);
         Bullet newBullet = poolOfBullets.GetAvailableBullet();
+
+        if (newBullet == null)
+        {
+            return;
+        }
+
         newBullet.transform.position = weaponTip.position; ;
         newBullet.transform.rotation = weaponTip.rotation;
         
         newBullet.gameObject.SetActive(true);
-
-        // call the return bullet method in some way
-        //poolOfBullets.ReturnBullet(newBullet);
+        newBullet.UseBullet();
     }
 }

@@ -11,15 +11,27 @@ public class BulletPooling : MonoBehaviour
     {
         for (int i = 0; i < 10; i++)
         {
-            Bullet bulletClone = Instantiate(bulletPrefab, transform);
-            bulletClone.gameObject.name = i.ToString();
-            availableBullets.Add(bulletClone);
-            bulletClone.gameObject.SetActive(false);
+            CreatePooledBullet();
         }
+    }
+
+    private void CreatePooledBullet()
+    {
+        Bullet bulletClone = Instantiate(bulletPrefab, transform);
+
+        bulletClone.InitializePooledBullet(this);
+
+        bulletClone.gameObject.name = availableBullets.Count.ToString();
+        availableBullets.Add(bulletClone);
+        bulletClone.gameObject.SetActive(false);
     }
 
     public Bullet GetAvailableBullet()
     {
+        if (availableBullets.Count == 0)
+        {
+            CreatePooledBullet();
+        }
         Bullet firstAvailableBullet = availableBullets[0];
         availableBullets.RemoveAt(0);
         unavailableBullets.Add(firstAvailableBullet);
