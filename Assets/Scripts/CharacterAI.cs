@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class CharacterAI : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent myAgent;
-    [SerializeField] private Transform target;
+    //[SerializeField] private Transform target;
     [SerializeField] private Vector3 destination;
 
     private NpcState currentState;
@@ -35,10 +35,10 @@ public class CharacterAI : MonoBehaviour
         currentState.OnStateEnter();
     }
 
-    private void FollowTarget()
-    {
-        myAgent.SetDestination(target.position);
-    }
+    //private void FollowTarget()
+    //{
+    //    myAgent.SetDestination(target.position);
+    //}
 
     public void SetAgentDestination(Vector3 destination)
     {
