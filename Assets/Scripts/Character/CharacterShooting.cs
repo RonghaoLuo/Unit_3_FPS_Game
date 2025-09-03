@@ -1,9 +1,14 @@
 using UnityEngine;
 
-public class CharacterShooting : MonoBehaviour
+public class CharacterShooting : MouseClickStrategy
 {
     [SerializeField] private BulletPooling poolOfBullets;
     [SerializeField] private Transform weaponTip;
+
+    public override void ExecuteStrategy()
+    {
+        Shoot();
+    }
 
     public void Shoot()
     {
