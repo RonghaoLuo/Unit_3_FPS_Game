@@ -1077,7 +1077,7 @@ GameObject:
   - component: {fileID: 1485350653}
   - component: {fileID: 1485350657}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Player HUD Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1175,7 +1175,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1485350652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dfafe79e00e40f4da60f82bdda6426c, type: 3}
+  m_Script: {fileID: 11500000, guid: e38ef4655e3c49e439e801f647290924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   countdownText: {fileID: 857704062}
@@ -1928,9 +1928,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4442497047941045139, guid: d5daa6be329eb484287819fc0f4659db, type: 3}
+      propertyPath: countdownText
+      value: 
+      objectReference: {fileID: 857704062}
     - target: {fileID: 7310642191217644749, guid: d5daa6be329eb484287819fc0f4659db, type: 3}
       propertyPath: m_Name
-      value: GameManager
+      value: Managers
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
