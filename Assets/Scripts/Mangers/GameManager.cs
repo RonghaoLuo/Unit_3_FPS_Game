@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private float gameCountdown;
     [SerializeField] private bool gameRunning;
+    [SerializeField] private PlayableDirector playableDirector;
+    [SerializeField] private SignalReceiver signalReceiver;
 
     private void Awake()
     {
@@ -45,6 +49,17 @@ public class GameManager : MonoBehaviour
                 StopGame();
             }
         }
+
+        #region User Inputs
+        if (playableDirector != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                playableDirector.time = playableDirector.duration;
+            }
+        }
+
+        #endregion
     }
 
     public void StartGame()

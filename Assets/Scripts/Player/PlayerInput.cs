@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private CharacterShooting shooting;
     [SerializeField] private PlayerInteract interact;
     [SerializeField] private MouseClickStrategy currentMouseClickStrategy;
-    [SerializeField] private CommandGiver CommandGiver;
+    [SerializeField] private CommandGiver commandGiver;
 
     void Start()
     {
@@ -67,7 +68,7 @@ public class PlayerInput : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            currentMouseClickStrategy = CommandGiver;
+            currentMouseClickStrategy = commandGiver;
         }
     }
 }
