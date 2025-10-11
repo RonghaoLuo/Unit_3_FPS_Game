@@ -17,8 +17,9 @@ public class PlayerHUD : MonoBehaviour
 
 
 
-    private void Awake()
+    private void Start()
     {
         UIManager.Instance.RegisterPlayerHUD(this);
+        gameObject.SetActive(false);
     }
 }

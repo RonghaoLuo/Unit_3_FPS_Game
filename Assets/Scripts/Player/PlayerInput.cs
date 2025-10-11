@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -13,9 +14,10 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private PlayerInteract interact;
     [SerializeField] private MouseClickStrategy currentMouseClickStrategy;
     [SerializeField] private CommandGiver commandGiver;
-
     void Start()
     {
+        GameManager.Instance.RegisterPlayerInput(this);
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }

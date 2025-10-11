@@ -8,14 +8,23 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public UnityEvent OnGameStart;
-    public UnityEvent OnGameStop;
+    public Action OnIntroFinish;
+    public Action OnGameOver;
     public Action<float> OnCountdownChange;
+    public Action OnTogglePauseGame;
+    public Action OnResetManagers;
 
     [SerializeField] private float gameCountdown;
     [SerializeField] private bool gameRunning;
-    [SerializeField] private PlayableDirector playableDirector;
-    [SerializeField] private SignalReceiver signalReceiver;
+    [SerializeField] private PlayableDirector introDirector;
+    [SerializeField] private PlayerInput playerInput;
+
+    private float gameCountdownInitialNumber;
+
+    public bool IsGameRunning
+    {
+        get { return gameRunning; }
+    }
 
     private void Awake()
     {
@@ -30,13 +39,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        gameCountdownInitialNumber = gameCountdown;
     }
 
-    // Update is called once per frame
+    private void OnDestroy()
+    {
+    }
+
     void Update()
     {
         if (gameCountdown >= 0 && gameRunning)
@@ -46,34 +57,86 @@ public class GameManager : MonoBehaviour
 
             if (gameCountdown < 0)
             {
-                StopGame();
+                GameOver();
             }
         }
 
         #region User Inputs
-        if (playableDirector != null)
+        if (introDirector != null)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                playableDirector.time = playableDirector.duration;
+                introDirector.time = introDirector.duration;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            TogglePauseGame();
         }
 
         #endregion
     }
 
-    public void StartGame()
+    public void FinishIntro()
     {
-        OnGameStart?.Invoke();
+        OnIntroFinish?.Invoke();
         gameRunning = true;
     }
 
-    public void StopGame()
+    public void TogglePauseGame()
+    {
+        gameRunning = !gameRunning;
+        Time.timeScale = gameRunning ? 1f : 0f;  // Pause/unpause gameplay
+        Cursor.visible = !gameRunning;
+        Cursor.lockState = gameRunning ? CursorLockMode.Locked : CursorLockMode.None;
+
+        playerInput.enabled = gameRunning;
+
+        OnTogglePauseGame?.Invoke();
+    }
+
+    private void GameOver()
     {
         gameRunning = false;
-        OnGameStop?.Invoke();
+        OnGameOver?.Invoke();
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
+
+    public void ReturnToMainMenu()
+    {
+        BootstrapManager.Instance.ReturnToMainMenu();
+        ResetAllManagers();
+        Time.timeScale = 1f;
+    }
+
+    public void RestartLevel()
+    {
+        BootstrapManager.Instance.RestartGame();
+        ResetAllManagers();
+        Time.timeScale = 1f;
+    }
+
+    private void ResetAllManagers()
+    {
+        OnResetManagers?.Invoke();
+
+        gameCountdown = gameCountdownInitialNumber;
+        playerInput = null;
+        introDirector = null;
+    }
+
+    #region Register
+    public void RegisterIntroDirector(PlayableDirector director)
+    {
+        introDirector = director;
+    }
+
+    public void RegisterPlayerInput(PlayerInput input)
+    {
+        playerInput = input;
+    }
+
+    #endregion
 }
