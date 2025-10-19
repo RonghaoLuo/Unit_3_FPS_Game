@@ -3113,9 +3113,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1445144965}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 413c931ef089cd944bb22c61ce6787e0, type: 3}
+  m_Script: {fileID: 11500000, guid: baa62ff733edd234f82d1cf02b3c5567, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrabableCube
   cubeRigidbody: {fileID: 1445144966}
 --- !u!1 &1482485328
 GameObject:
