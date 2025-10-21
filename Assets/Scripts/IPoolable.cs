@@ -1,16 +1,8 @@
 using UnityEngine;
 
-public class IPoolable : MonoBehaviour
+public interface IPoolable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    PoolableType Type { get; }
+    void OnUse();
+    void OnReturn();
 }
