@@ -55,9 +55,9 @@ public class PlayerInteract : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F) && currentInteraction != null)
         {
-            if (currentInteraction is GrabableCube cube)
+            if (currentInteraction is Grabbable grabbable)
             {
-                cube.SetGrabPointOrigin(eyeOrigin);
+                grabbable.SetGrabPointOrigin(eyeOrigin);
             }
 
             currentInteraction.OnInteract();

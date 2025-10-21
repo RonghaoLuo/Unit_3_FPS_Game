@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GrabableCube : MonoBehaviour, IGrabbable
+public class Grabbable : MonoBehaviour, IInteractable
 {
     [SerializeField] private Rigidbody cubeRigidbody;
 
