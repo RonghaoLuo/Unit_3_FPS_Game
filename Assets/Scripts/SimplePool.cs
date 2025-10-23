@@ -16,13 +16,13 @@ public class SimplePool
 
     // All assigned in constructor
     private readonly GameObject prefab;
-    private readonly Transform parent;
+    private readonly Transform poolParent;
     private readonly Queue<PooledObject> queue = new Queue<PooledObject>();
 
     public SimplePool(GameObject prefab, Transform parent = null, int initialSize = 10)
     {
         this.prefab = prefab;
-        this.parent = parent;
+        this.poolParent = parent;
         InitializePool(Mathf.Max(1, initialSize));
     }
 
@@ -30,7 +30,7 @@ public class SimplePool
     {
         for (int i = 0; i < count; i++)
         {
-            GameObject go = Object.Instantiate(prefab, parent);
+            GameObject go = Object.Instantiate(prefab, poolParent);
             IPoolable p = go.GetComponent<IPoolable>();
             if (p == null)
             {
@@ -59,7 +59,7 @@ public class SimplePool
 
     private PooledObject CreateNewPooledObject()
     {
-        GameObject go = Object.Instantiate(prefab, parent);
+        GameObject go = Object.Instantiate(prefab, poolParent);
         return new PooledObject(go, go.GetComponent<IPoolable>());
     }
 

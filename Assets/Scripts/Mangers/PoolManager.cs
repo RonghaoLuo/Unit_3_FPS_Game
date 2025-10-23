@@ -10,11 +10,13 @@ public class PoolManager : MonoBehaviour
     public static PoolManager Instance { get; private set; }
 
     [System.Serializable]
-    public struct PoolDefinition 
+    private struct PoolDefinition 
     { 
         public PoolableType type; 
         public GameObject prefab; 
-        public int initialSize; 
+        public int initialSize;
+        [System.NonSerialized]
+        public Transform poolParent;
     }
 
     private Dictionary<PoolableType, SimplePool> poolMap = 
@@ -30,11 +32,14 @@ public class PoolManager : MonoBehaviour
         for (int i = 0; i < definedPools.Length; i++)
         {
             PoolDefinition def = definedPools[i];
-            poolMap[def.type] = new SimplePool(def.prefab, gameObject.transform, def.initialSize);
+
+            GameObject poolParent = new(def.type.ToString());
+            poolParent.transform.SetParent(this.transform, false);
+            poolMap[def.type] = new SimplePool(def.prefab, poolParent.transform, def.initialSize);
         }
     }
 
-    public GameObject Spawn(PoolableType type, Vector3 pos, Quaternion rot, Vector3 velocity, Transform parent = null)
+    public GameObject Spawn(PoolableType type, Vector3 pos, Quaternion rot, Vector3 velocity)
     {
         if (!poolMap.TryGetValue(type, out var pool))
         {
@@ -43,7 +48,6 @@ public class PoolManager : MonoBehaviour
         }
         GameObject go = pool.Get();
 
-        go.transform.SetParent(parent);
         go.transform.position = pos;
         go.transform.rotation = rot;
 
@@ -51,6 +55,13 @@ public class PoolManager : MonoBehaviour
             rb.linearVelocity = velocity;
 
         return go;
+    }
+
+    public GameObject Spawn(PoolableType type, Transform shootOrigin, float shootSpeed)
+    {
+        return Spawn(type, shootOrigin.transform.position, 
+            shootOrigin.transform.rotation, 
+            shootOrigin.forward * shootSpeed);
     }
 
     public void ReturnToPool(IPoolable poolable)
