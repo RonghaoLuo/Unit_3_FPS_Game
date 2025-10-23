@@ -15,6 +15,7 @@ public class BootstrapManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
         
         LoadMainMenu();

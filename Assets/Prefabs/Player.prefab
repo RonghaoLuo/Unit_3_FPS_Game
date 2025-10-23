@@ -328,8 +328,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f348f5525b314574193910077cbd32dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolOfBullets: {fileID: 0}
   weaponTip: {fileID: 5047324392374065646}
+  shootSpeed: 10
 --- !u!114 &7932446350015283606
 MonoBehaviour:
   m_ObjectHideFlags: 0

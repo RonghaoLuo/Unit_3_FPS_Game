@@ -4263,10 +4263,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4337443206690175756, guid: 9083cfa9ada6de044b018d04621e58a7, type: 3}
-      propertyPath: m_Speed
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5714915717770990913, guid: 9083cfa9ada6de044b018d04621e58a7, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -4400,10 +4396,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1136045410094225472, guid: cac1f2c38f3aae44abdb07cfa9d4d725, type: 3}
-      propertyPath: shootSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 1136045410094225472, guid: cac1f2c38f3aae44abdb07cfa9d4d725, type: 3}
       propertyPath: poolOfBullets
       value: 

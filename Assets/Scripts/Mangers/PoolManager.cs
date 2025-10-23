@@ -26,8 +26,16 @@ public class PoolManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null) Instance = this;
-        else { Destroy(gameObject); return; }
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else 
+        { 
+            Destroy(gameObject); 
+            return; 
+        }
 
         for (int i = 0; i < definedPools.Length; i++)
         {
