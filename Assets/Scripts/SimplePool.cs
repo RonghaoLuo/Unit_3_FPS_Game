@@ -3,48 +3,80 @@ using UnityEngine;
 
 public class SimplePool
 {
+    private readonly struct PooledObject
+    {
+        public readonly GameObject gameObject;
+        public readonly IPoolable poolable;
+        public PooledObject(GameObject gameObject, IPoolable poolable)
+        {
+            this.gameObject = gameObject;
+            this.poolable = poolable;
+        }
+    }
+
     // All assigned in constructor
-    readonly GameObject prefab;
-    readonly Transform parent;
-    readonly Queue<GameObject> queue = new Queue<GameObject>();
-    readonly int initialSize;
+    private readonly GameObject prefab;
+    private readonly Transform parent;
+    private readonly Queue<PooledObject> queue = new Queue<PooledObject>();
 
     public SimplePool(GameObject prefab, Transform parent = null, int initialSize = 10)
     {
         this.prefab = prefab;
         this.parent = parent;
-        this.initialSize = initialSize;
-        Prewarm(initialSize);
+        InitializePool(Mathf.Max(1, initialSize));
     }
 
-    void Prewarm(int count)
+    private void InitializePool(int count)
     {
         for (int i = 0; i < count; i++)
         {
-            GameObject createdObject = Object.Instantiate(prefab, parent);
-            createdObject.SetActive(false);
-            queue.Enqueue(createdObject);
+            GameObject go = Object.Instantiate(prefab, parent);
+            IPoolable p = go.GetComponent<IPoolable>();
+            if (p == null)
+            {
+                Debug.LogError($"[SimplePool] Object '{prefab.name}' does not implement IPoolable.");
+                return;
+            }
+            go.SetActive(false);
+            queue.Enqueue(new PooledObject(go, p));
         }
     }
 
     public GameObject Get()
     {
-        GameObject go;
+        PooledObject po;
         if (queue.Count > 0)
         {
-            go = queue.Dequeue();
+            po = queue.Dequeue();
         }
         else
         {
-            go = Object.Instantiate(prefab, parent);
+            po = CreateNewPooledObject();
         }
-        go.GetComponent<IPoolable>().OnUse();
-        return go;
+        po.poolable.OnSpawn();
+        return po.gameObject;
     }
 
-    public void Return(GameObject go)
+    private PooledObject CreateNewPooledObject()
     {
-        go.GetComponent<IPoolable>().OnReturn();
-        queue.Enqueue(go);
+        GameObject go = Object.Instantiate(prefab, parent);
+        return new PooledObject(go, go.GetComponent<IPoolable>());
+    }
+
+    /// <summary>
+    /// Uses one GetComponent call
+    /// </summary>
+    /// <param name="go"></param>
+    //public void Return(GameObject go)
+    //{
+    //    IPoolable poolable = go.GetComponent<IPoolable>();
+    //    poolable.OnDespawn();
+    //    queue.Enqueue(new PooledObject { gameObject = go, poolable = poolable });
+    //}
+
+    public void Return(IPoolable p)
+    {
+        p.OnDespawn();
+        queue.Enqueue(new PooledObject(p.GameObject, p));
     }
 }

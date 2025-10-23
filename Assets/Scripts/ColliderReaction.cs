@@ -26,7 +26,7 @@ public class ColliderReaction : MonoBehaviour
         //    Debug.Log(hitInfo.collider.name);
         //    if (hitInfo.collider.CompareTag("Enemy"))
         //    {
-        //        // creating a state of "Investitating" and set destination to be transform.position
+        //        // creating a state of "Investitagting" and set destination to be transform.position
                 
         //    }
         //}

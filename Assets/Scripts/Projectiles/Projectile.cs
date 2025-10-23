@@ -5,17 +5,18 @@ public abstract class Projectile : MonoBehaviour, IPoolable
     [SerializeField] protected Rigidbody rb;
     [SerializeField] protected float lifeTime = 5f;
     [SerializeField] protected float spawnTime;
-
-    private PoolableType type;
+    [SerializeField] private PoolableType type;
 
     public PoolableType Type => type;
+
+    public GameObject GameObject => gameObject;
 
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    public virtual void OnUse()
+    public virtual void OnSpawn()
     {
         gameObject.SetActive(true);
         spawnTime = Time.time;
@@ -29,7 +30,7 @@ public abstract class Projectile : MonoBehaviour, IPoolable
         // reset any visual or owner info here
     }
 
-    public virtual void OnReturn()
+    public virtual void OnDespawn()
     {
         // Stop particle systems, disable effects
         gameObject.SetActive(false);
@@ -45,7 +46,7 @@ public abstract class Projectile : MonoBehaviour, IPoolable
     protected virtual void Update()
     {
         if (Time.time - spawnTime >= lifeTime) 
-            PoolManager.Instance.ReturnToPool(this.gameObject);
+            PoolManager.Instance.ReturnToPool(this);
     }
 
     protected virtual void OnCollisionEnter(Collision collision)

@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
+/// <summary>
+/// Can pool any GameObject
+/// </summary>
 public class PoolManager : MonoBehaviour
 {
     public static PoolManager Instance { get; private set; }
@@ -13,8 +17,10 @@ public class PoolManager : MonoBehaviour
         public int initialSize; 
     }
 
-    public PoolDefinition[] definedPools;
-    Dictionary<PoolableType, SimplePool> poolMap = new Dictionary<PoolableType, SimplePool>();
+    private Dictionary<PoolableType, SimplePool> poolMap = 
+        new Dictionary<PoolableType, SimplePool>();
+
+    [SerializeField] private PoolDefinition[] definedPools;
 
     void Awake()
     {
@@ -24,7 +30,7 @@ public class PoolManager : MonoBehaviour
         for (int i = 0; i < definedPools.Length; i++)
         {
             PoolDefinition def = definedPools[i];
-            poolMap[def.type] = new SimplePool(def.prefab, this.transform, Mathf.Max(1, def.initialSize));
+            poolMap[def.type] = new SimplePool(def.prefab, gameObject.transform, def.initialSize);
         }
     }
 
@@ -32,7 +38,7 @@ public class PoolManager : MonoBehaviour
     {
         if (!poolMap.TryGetValue(type, out var pool))
         {
-            Debug.LogError($"No pool for {type}");
+            Debug.LogError($"[PoolManager] No pool for {type}");
             return null;
         }
         GameObject go = pool.Get();
@@ -47,21 +53,21 @@ public class PoolManager : MonoBehaviour
         return go;
     }
 
-    public void ReturnToPool(GameObject go)
+    public void ReturnToPool(IPoolable poolable)
     {
-        if (go == null) return;
-        if (!poolMap.TryGetValue(go.GetComponent<IPoolable>().Type, out var pool))
+        if (!poolMap.TryGetValue(poolable.Type, out var pool))
         {
-            Debug.LogWarning("No pool for this object type, destroying.");
-            Destroy(go.gameObject);
+            Debug.LogWarning($"[PoolManager] No pool for {poolable.Type}, destroying.");
+            Destroy(poolable.GameObject);
             return;
         }
-        pool.Return(go);
+
+        pool.Return(poolable);
     }
 }
 
 
 public enum PoolableType
 {
-    Paintball, Bullet, Enemy
+    Ball, Paintball, Bullet, Enemy
 }
