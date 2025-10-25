@@ -4,6 +4,7 @@ public class CharacterShooting : MouseClickStrategy
 {
     [SerializeField] private Transform weaponTip;
     [SerializeField] private float shootSpeed;
+    [SerializeField] private PoolableType toShoot;
 
     public override void ExecuteStrategy()
     {
@@ -12,6 +13,6 @@ public class CharacterShooting : MouseClickStrategy
 
     public void Shoot()
     {
-        GameObject spawnedProjectile = PoolManager.Instance.Spawn(PoolableType.Ball, weaponTip.transform, shootSpeed);
+        GameObject spawnedProjectile = PoolManager.Instance.Spawn(toShoot, weaponTip.transform, shootSpeed);
     }
 }
