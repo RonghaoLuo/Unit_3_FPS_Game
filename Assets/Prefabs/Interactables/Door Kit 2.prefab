@@ -9,11 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7039736062738575665}
-  - component: {fileID: 2543663928546785936}
   - component: {fileID: 5266555198630831014}
   - component: {fileID: 8696097901967416968}
-  m_Layer: 6
-  m_Name: Door Kit
+  m_Layer: 0
+  m_Name: Door Kit 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,27 +34,6 @@ Transform:
   - {fileID: 230325494015964385}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2543663928546785936
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3703793849111968245}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 6.875163, y: 0.8994005, z: 5.639081}
-  m_Center: {x: 0.08577776, y: 0.19657862, z: 0.077469826}
 --- !u!114 &5266555198630831014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d31345bb440d4224b98154adf47cf8c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDoorUnlocked: 0
+  isDoorUnlocked: 1
   animator: {fileID: 8696097901967416968}
 --- !u!95 &8696097901967416968
 Animator:
@@ -155,10 +133,12 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: f44bd1e59f81a374ba868f3b6dcb535c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -176,6 +156,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
