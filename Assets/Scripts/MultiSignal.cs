@@ -21,7 +21,7 @@ public class MultiSignal : MonoBehaviour
             return false;
         foreach (var detector in copyOfDetectors)
         {
-            if (!detector.IsActivated) return false;
+            if (!detector.IsTrue) return false;
             continue;
         }
 

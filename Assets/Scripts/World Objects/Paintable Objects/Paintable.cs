@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Paintable : MonoBehaviour
@@ -5,6 +6,8 @@ public class Paintable : MonoBehaviour
     [SerializeField] private MeshRenderer meshRenderer;
 
     private Color paintColour;
+
+    public Action OnColourChange;
 
     public Color PaintColour
     {
@@ -15,5 +18,6 @@ public class Paintable : MonoBehaviour
     {
         paintColour = newColour;
         meshRenderer.material.color = newColour;
+        OnColourChange?.Invoke();
     }
 }
