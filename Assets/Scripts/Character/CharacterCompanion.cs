@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class CharacterCompanion : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private CharacterShooting shooting;
+    [SerializeField] private PlayerShootPaintball shooting;
     [SerializeField] private Queue<Command> commandsQueue = new Queue<Command>();
     [SerializeField] private int maxNumOfCommands;
 
@@ -16,7 +16,7 @@ public class CharacterCompanion : MonoBehaviour
         return agent;
     }
 
-    public CharacterShooting GetShooting()
+    public PlayerShootPaintball GetShooting()
     {
         return shooting;
     }

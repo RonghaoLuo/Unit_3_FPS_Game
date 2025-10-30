@@ -156,6 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5556509994417442762}
   - component: {fileID: 3870561594279952278}
+  - component: {fileID: 4877566646519478827}
   - component: {fileID: 7234023427584867363}
   - component: {fileID: 6395688467773941639}
   - component: {fileID: 5212604530566669502}
@@ -164,7 +165,7 @@ GameObject:
   - component: {fileID: 3479712109852942294}
   - component: {fileID: 1136045410094225472}
   - component: {fileID: 7932446350015283606}
-  - component: {fileID: 4877566646519478827}
+  - component: {fileID: 1198976141722156847}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -214,6 +215,33 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!54 &4877566646519478827
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5382061451887235705}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &7234023427584867363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,6 +281,7 @@ MonoBehaviour:
   interact: {fileID: 7234023427584867363}
   currentMouseClickStrategy: {fileID: 0}
   commandGiver: {fileID: 7932446350015283606}
+  paintInventory: {fileID: 1198976141722156847}
 --- !u!114 &5212604530566669502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponTip: {fileID: 5047324392374065646}
   shootSpeed: 10
+  toShoot: 0
 --- !u!114 &7932446350015283606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,33 +373,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   companion: {fileID: 0}
---- !u!54 &4877566646519478827
-Rigidbody:
+--- !u!114 &1198976141722156847
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5382061451887235705}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8e3992f6d9987f4f95b7fccd2b8b549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintInventory
+  keyCodeToColorMap:
+  - keyCode: 49
+    color: {r: 1, g: 0.3882353, b: 0.2784314, a: 1}
+  - keyCode: 50
+    color: {r: 0, g: 0.80784315, b: 0.81960785, a: 1}
+  - keyCode: 51
+    color: {r: 1, g: 0.93333334, b: 0.54901963, a: 1}
+  - keyCode: 52
+    color: {r: 0.6039216, g: 0.8039216, b: 0.19607843, a: 1}
+  - keyCode: 53
+    color: {r: 1, g: 0.64705884, b: 0, a: 1}
+  - keyCode: 54
+    color: {r: 0.13333334, g: 0.14117648, b: 0.8039216, a: 1}
+  - keyCode: 55
+    color: {r: 0.627451, g: 0.1254902, b: 0.9411765, a: 1}
 --- !u!1 &6328860917284784234
 GameObject:
   m_ObjectHideFlags: 0

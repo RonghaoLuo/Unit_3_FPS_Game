@@ -10,13 +10,17 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private CharacterRotation _rotation;
     [SerializeField] private CharacterSprint _sprint;
     [SerializeField] private CharacterJump jump;
-    [SerializeField] private CharacterShooting shooting;
+    [SerializeField] private PlayerShootPaintball shooting;
     [SerializeField] private PlayerInteract interact;
     [SerializeField] private MouseClickStrategy currentMouseClickStrategy;
     [SerializeField] private CommandGiver commandGiver;
+    [SerializeField] private PaintInventory paintInventory;
+
     void Start()
     {
         GameManager.Instance.RegisterPlayerInput(this);
+
+        currentMouseClickStrategy = shooting;
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -64,13 +68,21 @@ public class PlayerInput : MonoBehaviour
                 currentMouseClickStrategy.ExecuteStrategy();
             }
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+
+        #region Select Colours
+        if (paintInventory != null)
         {
-            currentMouseClickStrategy = shooting;
+            for (int i = 1; i <= 7; i++)
+            {
+                if (Input.GetKeyDown(KeyCode.Alpha0 + i))
+                {
+                    paintInventory.TrySelectColourWithKeyCode(KeyCode.Alpha0 + i);
+                }
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            currentMouseClickStrategy = commandGiver;
-        }
+
+        #endregion
     }
+
+
 }

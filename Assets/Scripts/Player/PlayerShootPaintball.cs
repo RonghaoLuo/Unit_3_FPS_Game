@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public class CharacterShooting : MouseClickStrategy
+public class PlayerShootPaintball : MouseClickStrategy
 {
     [SerializeField] private Transform weaponTip;
     [SerializeField] private float shootSpeed;
     [SerializeField] private PoolableType toShoot;
+
 
     public override void ExecuteStrategy()
     {

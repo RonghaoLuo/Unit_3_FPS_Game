@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Paintball : Projectile
 {
-    [SerializeField] private Color _color;
+    [SerializeField] private Color _color = Color.gray;
     [SerializeField] private float effectRadius;
     [SerializeField] private LayerMask paintableMask;
 
@@ -20,5 +20,11 @@ public class Paintball : Projectile
                 continue;
             paintable.SetColour(_color);
         }
+    }
+
+    public override void OnSpawn()
+    {
+        _color = PaintInventory.selectedColour;
+        base.OnSpawn();
     }
 }
