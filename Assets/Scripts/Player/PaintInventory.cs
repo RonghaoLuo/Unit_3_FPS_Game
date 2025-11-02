@@ -3,41 +3,40 @@ using UnityEngine;
 
 public class PaintInventory : MonoBehaviour
 {
-    public static Color selectedColour = Color.gray;
+    public static Color selectedPaint = Color.gray;
 
-    [SerializeField] private List<KeyCodeColorPair> keyCodeToColorMap = new();
+    [SerializeField] private List<KeyCodeIndexPair> keyCodeToIndexMap = new();
+    [SerializeField] private List<Color> existPaints = new();
+    [SerializeField] private List<bool> paintAvailability = new();
 
-    private Dictionary<KeyCode, Color> actualKeyCodeToColorMap;
-    private Dictionary<Color, bool> colorToAvailabilityMap = new();
+    private Dictionary<KeyCode, int> actualKeyCodeToIndexMap;
 
     private void Awake()
     {
-        actualKeyCodeToColorMap = new();
-        foreach (KeyCodeColorPair pair in keyCodeToColorMap)
+        actualKeyCodeToIndexMap = new();
+        foreach (KeyCodeIndexPair pair in keyCodeToIndexMap)
         {
-            actualKeyCodeToColorMap.Add(pair.keyCode, pair.color);
-            colorToAvailabilityMap.Add(pair.color, true);
+            actualKeyCodeToIndexMap.Add(pair.keyCode, pair.index);
         }
     }
 
-    public void TrySelectColour(Color color)
+    private void TrySelectPaint(int index)
     {
-        if (color == null || !colorToAvailabilityMap.ContainsKey(color)) return;
-        if (colorToAvailabilityMap[color])
-        {
-            selectedColour = color;
-        }
+        if (existPaints[index] == null || !paintAvailability[index]) return;
+
+        selectedPaint = existPaints[index];
     }
 
-    public void TrySelectColourWithKeyCode(KeyCode code)
+    public void TrySelectPaintWithKeyCode(KeyCode code)
     {
-        TrySelectColour(actualKeyCodeToColorMap[code]);
+        TrySelectPaint(actualKeyCodeToIndexMap[code]);
     }
+
 
     [System.Serializable]
-    private struct KeyCodeColorPair
+    private struct KeyCodeIndexPair
     {
         public KeyCode keyCode;
-        public Color color;
+        public int index;
     }
 }

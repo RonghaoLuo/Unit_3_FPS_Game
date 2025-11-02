@@ -385,21 +385,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8e3992f6d9987f4f95b7fccd2b8b549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PaintInventory
-  keyCodeToColorMap:
+  keyCodeToIndexMap:
   - keyCode: 49
-    color: {r: 1, g: 0.3882353, b: 0.2784314, a: 1}
+    index: 0
   - keyCode: 50
-    color: {r: 0, g: 0.80784315, b: 0.81960785, a: 1}
+    index: 1
   - keyCode: 51
-    color: {r: 1, g: 0.93333334, b: 0.54901963, a: 1}
+    index: 2
   - keyCode: 52
-    color: {r: 0.6039216, g: 0.8039216, b: 0.19607843, a: 1}
+    index: 3
   - keyCode: 53
-    color: {r: 1, g: 0.64705884, b: 0, a: 1}
+    index: 4
   - keyCode: 54
-    color: {r: 0.13333334, g: 0.14117648, b: 0.8039216, a: 1}
+    index: 5
   - keyCode: 55
-    color: {r: 0.627451, g: 0.1254902, b: 0.9411765, a: 1}
+    index: 6
+  existPaints:
+  - {r: 0, g: 0.80784315, b: 0.81960785, a: 1}
+  - {r: 1, g: 0.3882353, b: 0.2784314, a: 1}
+  - {r: 0.6039216, g: 0.8039216, b: 0.19607843, a: 1}
+  - {r: 1, g: 0.93333334, b: 0.54901963, a: 1}
+  - {r: 0.13333334, g: 0.14117648, b: 0.8039216, a: 1}
+  - {r: 1, g: 0.64705884, b: 0, a: 1}
+  - {r: 0.627451, g: 0.1254902, b: 0.9411765, a: 1}
+  paintAvailability: 01010000000000
 --- !u!1 &6328860917284784234
 GameObject:
   m_ObjectHideFlags: 0

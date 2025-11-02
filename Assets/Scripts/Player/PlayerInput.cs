@@ -76,7 +76,7 @@ public class PlayerInput : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Alpha0 + i))
                 {
-                    paintInventory.TrySelectColourWithKeyCode(KeyCode.Alpha0 + i);
+                    paintInventory.TrySelectPaintWithKeyCode(KeyCode.Alpha0 + i);
                 }
             }
         }

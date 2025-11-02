@@ -7,6 +7,8 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
+    public Action<uint> OnUpdateSelectionOutline;
+
     [SerializeField] private PlayerHUD playerHUD;
     [SerializeField] private PauseMenu pauseMenu;
 
@@ -53,6 +55,8 @@ public class UIManager : MonoBehaviour
 
     private void HandleGameStart()
     {
+        if (playerHUD == null) return;
+
         playerHUD.gameObject.SetActive(true);
     }
 

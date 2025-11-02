@@ -24,7 +24,7 @@ public class Paintball : Projectile
 
     public override void OnSpawn()
     {
-        _color = PaintInventory.selectedColour;
+        _color = PaintInventory.selectedPaint;
         base.OnSpawn();
     }
 }
