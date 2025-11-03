@@ -18,14 +18,24 @@ public class PlayerHUD : MonoBehaviour
         countdownText.text = formattedTime.Minutes + ":" + formattedTime.Seconds;
     }
 
-    public void SetOutlinePosition(Transform transform)
+    private void SetOutlinePosition(Transform transform)
     {
         selectionOutline.transform.position = transform.position;
     }
 
-    public void SetOutlinePosition(uint paintIconIndex)
+    private void SetOutlinePosition(int paintIconIndex)
     {
         SetOutlinePosition(paintIcons[paintIconIndex].transform);
+    }
+
+    private void UpdateAllPaintIcons()
+    {
+
+    }
+
+    private void UpdatePaintIcon()
+    {
+
     }
 
     private void Start()

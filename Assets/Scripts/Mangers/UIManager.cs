@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    public Action<uint> OnUpdateSelectionOutline;
+    public Action<int> OnUpdateSelectionOutline;
 
     [SerializeField] private PlayerHUD playerHUD;
     [SerializeField] private PauseMenu pauseMenu;

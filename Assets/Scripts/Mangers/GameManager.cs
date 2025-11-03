@@ -19,6 +19,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayableDirector introDirector;
     [SerializeField] private PlayerInput playerInput;
 
+    [ContextMenu("Debug Start Game")] private void DebugStartGame()
+    {
+        FinishIntro();
+    }
+
     private float gameCountdownInitialNumber;
 
     public bool IsGameRunning
