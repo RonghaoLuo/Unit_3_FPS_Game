@@ -33,9 +33,9 @@ public class PlayerHUD : MonoBehaviour
 
     }
 
-    private void UpdatePaintIcon()
+    private void SetPaintIconColour(int iconIndex, Color colour)
     {
-
+        paintIcons[iconIndex].color = colour;
     }
 
     private void Start()
@@ -44,10 +44,12 @@ public class PlayerHUD : MonoBehaviour
         gameObject.SetActive(false);
 
         UIManager.Instance.OnUpdateSelectionOutline += SetOutlinePosition;
+        UIManager.Instance.OnUpdatePaintIcon += SetPaintIconColour;
     }
 
     private void OnDestroy()
     {
         UIManager.Instance.OnUpdateSelectionOutline -= SetOutlinePosition;
+        UIManager.Instance.OnUpdatePaintIcon -= SetPaintIconColour;
     }
 }

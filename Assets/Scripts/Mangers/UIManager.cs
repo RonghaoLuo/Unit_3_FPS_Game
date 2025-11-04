@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     public Action<int> OnUpdateSelectionOutline;
+    public Action<int, Color> OnUpdatePaintIcon;
 
     [SerializeField] private PlayerHUD playerHUD;
     [SerializeField] private PauseMenu pauseMenu;

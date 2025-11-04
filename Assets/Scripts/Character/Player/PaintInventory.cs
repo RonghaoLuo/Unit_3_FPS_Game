@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Semi Manager
+/// </summary>
 public class PaintInventory : MonoBehaviour
 {
-    public static Color selectedPaint = Color.gray;
+    public static Color selectedPaint;
 
     [SerializeField] private List<KeyCodeIndexPair> keyCodeToIndexMap = new();
     [SerializeField] private List<Color> existPaints = new();
@@ -14,6 +17,8 @@ public class PaintInventory : MonoBehaviour
 
     private void Awake()
     {
+        selectedPaint = existPaints[0];
+
         CollectionManager.Instance.RegisterInventory(this);
 
         actualKeyCodeToIndexMap = new();
@@ -25,6 +30,17 @@ public class PaintInventory : MonoBehaviour
         for (int i = 0; i < existPaints.Count; i++)
         {
             paintToIndexMap.Add(existPaints[i], i);
+        }
+    }
+
+    private void Start()
+    {
+        for (int i = 0; i < paintAvailability.Count; i++)
+        {
+            if (paintAvailability[i])
+            {
+                UIManager.Instance.OnUpdatePaintIcon?.Invoke(i, existPaints[i]);
+            }
         }
     }
 
@@ -50,6 +66,7 @@ public class PaintInventory : MonoBehaviour
     {
         if (!existPaints.Contains(colour)) return;
         SetPaintAvailability(colour, true);
+        UIManager.Instance.OnUpdatePaintIcon?.Invoke(paintToIndexMap[colour], colour);
     }
 
 
