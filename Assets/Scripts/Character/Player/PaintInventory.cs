@@ -14,6 +14,8 @@ public class PaintInventory : MonoBehaviour
 
     private void Awake()
     {
+        CollectionManager.Instance.RegisterInventory(this);
+
         actualKeyCodeToIndexMap = new();
         foreach (KeyCodeIndexPair pair in keyCodeToIndexMap)
         {
@@ -46,6 +48,7 @@ public class PaintInventory : MonoBehaviour
 
     public void CollectPaint(Color colour)
     {
+        if (!existPaints.Contains(colour)) return;
         SetPaintAvailability(colour, true);
     }
 

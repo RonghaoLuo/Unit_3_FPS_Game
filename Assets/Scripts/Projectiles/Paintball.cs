@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class Paintball : Projectile
 {
-    [SerializeField] private Color _color = Color.gray;
+    [SerializeField] private Color paintColor = Color.gray5;
     [SerializeField] private float effectRadius;
     [SerializeField] private LayerMask paintableMask;
+    [SerializeField] private MeshRenderer meshRenderer;
 
     protected override void OnCollisionEnter(Collision collision)
     {
@@ -18,13 +19,14 @@ public class Paintball : Projectile
         {
             if (!collider.gameObject.TryGetComponent<Paintable>(out Paintable paintable))
                 continue;
-            paintable.SetColour(_color);
+            paintable.SetColour(paintColor);
         }
     }
 
     public override void OnSpawn()
     {
-        _color = PaintInventory.selectedPaint;
+        paintColor = PaintInventory.selectedPaint;
+        meshRenderer.material.color = paintColor;
         base.OnSpawn();
     }
 }
