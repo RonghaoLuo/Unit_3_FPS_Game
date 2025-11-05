@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Semi Manager
+/// Semi Manager since it does its own logics?
 /// </summary>
 public class PaintInventory : MonoBehaviour
 {

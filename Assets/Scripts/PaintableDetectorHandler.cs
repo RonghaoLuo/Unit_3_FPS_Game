@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MultiSignal : MonoBehaviour
+public class PaintableDetectorHandler : MonoBehaviour
 {
     [SerializeField] private float checkTime = 1f;
     [SerializeField] private List<PaintableDetector> detectors = new();
