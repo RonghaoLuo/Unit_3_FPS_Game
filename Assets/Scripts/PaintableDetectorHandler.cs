@@ -4,66 +4,65 @@ using UnityEngine;
 
 public class PaintableDetectorHandler : MonoBehaviour
 {
-    [SerializeField] private float checkTime = 1f;
     [SerializeField] private List<PaintableDetector> detectors = new();
     [SerializeField] private List<Door> targets = new();
 
+    [SerializeField] private int totalDetectors = 0;
+    [SerializeField] private int totalTrues = 0;
+
     private void Start()
     {
-        StartPeriodicUpdate();
-    }
+        totalDetectors = detectors.Count;
 
-    private bool IsAllInputTrue()
-    {
-        HashSet<PaintableDetector> copyOfDetectors = new(detectors);
-
-        if (detectors.Count < 1) 
-            return false;
-        foreach (var detector in copyOfDetectors)
+        foreach (PaintableDetector detector in detectors)
         {
-            if (!detector.IsTrue) return false;
-            continue;
+            if (detector.Output)
+            {
+                totalTrues++;
+            }
+            detector.OnOutputChange += UpdateOutput;
         }
-
-        return true;
     }
 
-    private void OutputToAllTargets()
+    private void OnDestroy()
     {
-        HashSet<Door> copyOfTargets = new(targets);
-
-        if (IsAllInputTrue())
+        foreach (PaintableDetector detector in detectors)
         {
-            foreach (var target in copyOfTargets)
+            detector.OnOutputChange -= UpdateOutput;
+        }
+    }
+
+    private void UpdateTotalTrues(bool newInput)
+    {
+        if (newInput)
+        {
+            totalTrues++;
+        }
+        else
+        {
+            totalTrues--;
+        }
+    }
+
+    private void UpdateOutput(bool newInput)
+    {
+        UpdateTotalTrues(newInput);
+
+        if (totalTrues == totalDetectors)
+        {
+            foreach (Door target in targets)
             {
                 target.OpenDoor();
             }
         }
         else
         {
-            foreach (var target in copyOfTargets)
+            foreach(Door target in targets)
             {
                 target.CloseDoor();
             }
         }
     }
 
-    private IEnumerator PeriodicUpdate()
-    {
-        while (true)
-        {
-            OutputToAllTargets();
-            yield return new WaitForSeconds(checkTime);
-        }
-    }
-
-    public void StartPeriodicUpdate()
-    {
-        StartCoroutine(PeriodicUpdate());
-    }
-
-    public void StopPeriodicUpdate()
-    {
-        StopCoroutine(PeriodicUpdate());
-    }
+    
 }

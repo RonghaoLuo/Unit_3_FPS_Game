@@ -1,23 +1,21 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class PaintableDetector : MonoBehaviour
 {
-    //public UnityEvent OnActivation, OnDeactivation;
+    public Action<bool> OnOutputChange;
     
-    public bool IsTrue
+    public bool Output
     {
-        get { return isTrue; }
+        get { return output; }
     }
  
     [SerializeField] private Color correctColour;
     [SerializeField] private List<Paintable> paintablesDetected;
     //[SerializeField] private float checkTime = 1f;
 
-    [SerializeField] private bool isTrue;
+    [SerializeField] private bool output;
 
     private void Awake()
     {
@@ -45,7 +43,12 @@ public class PaintableDetector : MonoBehaviour
         // If this paintable has correct colour, output true regardless of other paintables
         if (paintable.PaintColour == correctColour)
         {
-            isTrue = true;
+            bool oldOutput = output;
+
+            output = true;
+
+            if (oldOutput != output)
+                OnOutputChange?.Invoke(output);
         }
         paintablesDetected.Add(paintable);
         paintable.OnColourChange += UpdateOutput;
@@ -82,7 +85,12 @@ public class PaintableDetector : MonoBehaviour
 
     private void UpdateOutput()
     {
-        isTrue = DetectedPaintablesHasCorrectColour();
+        bool oldOutput = output;
+
+        output = DetectedPaintablesHasCorrectColour();
+
+        if (oldOutput != output)
+            OnOutputChange?.Invoke(output);
     }
 
 

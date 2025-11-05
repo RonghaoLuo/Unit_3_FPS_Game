@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4893572394493341721}
   - component: {fileID: 5066656767547920187}
   m_Layer: 0
-  m_Name: Multi-Signal Handler
+  m_Name: Paintable Detector Handler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2478afc4fb413a49a2c44dc453c0979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MultiSignal
-  checkTime: 0.5
   detectors: []
   targets: []
+  totalDetectors: 0
+  totalTrues: 0
