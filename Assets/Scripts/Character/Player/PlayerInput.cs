@@ -72,7 +72,7 @@ public class PlayerInput : MonoBehaviour
         #region Select Colours
         if (paintInventory != null)
         {
-            for (int i = 1; i <= 7; i++)
+            for (int i = 1; i <= paintInventory.NumOfExistPaints; i++)
             {
                 if (Input.GetKeyDown(KeyCode.Alpha0 + i))
                 {

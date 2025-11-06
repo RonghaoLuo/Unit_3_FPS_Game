@@ -28,11 +28,6 @@ public class PlayerHUD : MonoBehaviour
         SetOutlinePosition(paintIcons[paintIconIndex].transform);
     }
 
-    private void UpdateAllPaintIcons()
-    {
-
-    }
-
     private void SetPaintIconColour(int iconIndex, Color colour)
     {
         paintIcons[iconIndex].color = colour;

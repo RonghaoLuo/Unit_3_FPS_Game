@@ -8,15 +8,22 @@ public class PaintInventory : MonoBehaviour
 {
     public static Color selectedPaint;
 
+    public int NumOfExistPaints
+    {
+        get { return numOfExistPaints; }
+    }
+
     [SerializeField] private List<KeyCodeIndexPair> keyCodeToIndexMap = new();
     [SerializeField] private List<Color> existPaints = new();
     [SerializeField] private List<bool> paintAvailability = new();
 
     private Dictionary<KeyCode, int> actualKeyCodeToIndexMap;
     private Dictionary<Color, int> paintToIndexMap;
+    private int numOfExistPaints;
 
     private void Awake()
     {
+        numOfExistPaints = existPaints.Count;
         selectedPaint = existPaints[0];
 
         CollectionManager.Instance.RegisterInventory(this);
