@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CommandGiver : MouseClickStrategy
 {
-    [SerializeField] private CharacterCompanion companion;
+    [SerializeField] private CompanionNpc companion;
 
     public override void ExecuteStrategy()
     {

@@ -4,7 +4,7 @@ public class IdleNpcState : NpcState
 {
     private float timer = 0;
 
-    public IdleNpcState(CharacterAI owner) : base(owner)
+    public IdleNpcState(CharacterAIChasePlayer owner) : base(owner)
     {
     }
 

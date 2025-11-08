@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WanderNpcState : NpcState
 {
-    public WanderNpcState(CharacterAI owner) : base(owner)
+    public WanderNpcState(CharacterAIChasePlayer owner) : base(owner)
     {
 
     }

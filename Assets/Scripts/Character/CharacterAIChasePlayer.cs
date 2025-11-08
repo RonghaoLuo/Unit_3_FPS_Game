@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class CharacterAI : MonoBehaviour
+public class CharacterAIChasePlayer : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent myAgent;
     //[SerializeField] private Transform target;

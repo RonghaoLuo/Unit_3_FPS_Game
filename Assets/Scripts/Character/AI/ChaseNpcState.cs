@@ -4,7 +4,7 @@ public class ChaseNpcState : NpcState
 {
     public Transform targetToChase;
 
-    public ChaseNpcState(CharacterAI owner) : base(owner)
+    public ChaseNpcState(CharacterAIChasePlayer owner) : base(owner)
     {
 
     }

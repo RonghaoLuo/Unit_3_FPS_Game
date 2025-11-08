@@ -4,11 +4,11 @@ public class AIDetectionArea : MonoBehaviour
 {
     [SerializeField] private Transform eyeOrigin;
     [SerializeField] private bool canSeeTarget;
-    private CharacterAI characterAI;
+    private CharacterAIChasePlayer characterAI;
 
     private void Awake()
     {
-        characterAI = GetComponentInParent<CharacterAI>();
+        characterAI = GetComponentInParent<CharacterAIChasePlayer>();
     }
 
     private void OnTriggerExit(Collider other)

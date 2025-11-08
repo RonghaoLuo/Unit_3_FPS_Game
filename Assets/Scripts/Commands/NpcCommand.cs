@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public abstract class Command
+public abstract class NpcCommand
 {
-    public CharacterCompanion characterTarget;
+    public CommandableNpc targetingNpc;
 
     public abstract bool IsComplete();
 

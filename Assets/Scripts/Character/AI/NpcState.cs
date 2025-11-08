@@ -1,6 +1,6 @@
 public abstract class NpcState
 {
-    protected CharacterAI character;
+    protected CharacterAIChasePlayer character;
 
     public abstract void OnStateEnter();
 
@@ -8,7 +8,7 @@ public abstract class NpcState
 
     public abstract void OnStateRun();
 
-    public NpcState(CharacterAI owner)
+    public NpcState(CharacterAIChasePlayer owner)
     {
         character = owner;
     }

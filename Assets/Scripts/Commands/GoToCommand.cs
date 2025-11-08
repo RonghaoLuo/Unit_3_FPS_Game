@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GoToCommand : Command
+public class GoToCommand : NpcCommand
 {
     private Vector3 goToDestination;
 
@@ -16,11 +16,11 @@ public class GoToCommand : Command
 
     public override void Execute()
     {
-        characterTarget.GetAgent().SetDestination(goToDestination);
+        targetingNpc.GetAgent().SetDestination(goToDestination);
     }
 
     public override bool IsComplete()
     {
-        return characterTarget.GetAgent().remainingDistance <= characterTarget.GetAgent().stoppingDistance;
+        return targetingNpc.GetAgent().remainingDistance <= targetingNpc.GetAgent().stoppingDistance;
     }
 }

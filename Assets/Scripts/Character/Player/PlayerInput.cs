@@ -68,6 +68,13 @@ public class PlayerInput : MonoBehaviour
                 currentMouseClickStrategy.ExecuteStrategy();
             }
         }
+        if (commandGiver != null)
+        {
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                commandGiver.ExecuteStrategy();
+            }
+        }
 
         #region Select Colours
         if (paintInventory != null)

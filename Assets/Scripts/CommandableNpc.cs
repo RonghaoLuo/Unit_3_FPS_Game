@@ -2,26 +2,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class CharacterCompanion : MonoBehaviour
+public class CommandableNpc : MonoBehaviour
 {
-    [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private PlayerShootPaintball shooting;
-    [SerializeField] private Queue<Command> commandsQueue = new Queue<Command>();
-    [SerializeField] private int maxNumOfCommands;
+    [SerializeField] protected NavMeshAgent agent;
+    [SerializeField] protected Queue<NpcCommand> commandsQueue = new Queue<NpcCommand>();
+    [SerializeField] protected int maxNumOfCommands;
 
-    private Command currentCommand;
+    protected NpcCommand currentCommand;
 
     public NavMeshAgent GetAgent()
     {
         return agent;
     }
 
-    public PlayerShootPaintball GetShooting()
-    {
-        return shooting;
-    }
-
-    public void AddCommandToQueue(Command newCommand)
+    public void AddCommandToQueue(NpcCommand newCommand)
     {
         if (commandsQueue.Count > maxNumOfCommands)
         {
@@ -29,12 +23,12 @@ public class CharacterCompanion : MonoBehaviour
             return;
         }
 
-        newCommand.characterTarget = this;
-        
+        newCommand.targetingNpc = this;
+
         commandsQueue.Enqueue(newCommand);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (currentCommand != null)
         {
