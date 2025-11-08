@@ -26,24 +26,42 @@ public class CommandableNpc : MonoBehaviour
         newCommand.targetingNpc = this;
 
         commandsQueue.Enqueue(newCommand);
+
+        if (currentCommand == null)
+        {
+            ExecuteNextCommand();
+        }
+    }
+
+    private void ExecuteNextCommand()
+    {
+        if (commandsQueue.Count == 0)
+        {
+            currentCommand = null;
+            return;
+        }
+
+        currentCommand = commandsQueue.Dequeue();
+        currentCommand.OnCommandComplete = ExecuteNextCommand;
+        currentCommand.Execute();
     }
 
     protected virtual void Update()
     {
-        if (currentCommand != null)
-        {
-            if (currentCommand.IsComplete())
-            {
-                currentCommand = null;
-            }
+        //if (currentCommand != null)
+        //{
+        //    if (currentCommand.IsComplete())
+        //    {
+        //        currentCommand = null;
+        //    }
 
-            return;
-        }
+        //    return;
+        //}
 
-        if (commandsQueue.Count > 0)
-        {
-            currentCommand = commandsQueue.Dequeue();
-            currentCommand.Execute();
-        }
+        //if (commandsQueue.Count > 0)
+        //{
+        //    currentCommand = commandsQueue.Dequeue();
+        //    currentCommand.Execute();
+        //}
     }
 }
