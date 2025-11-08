@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class AIDetectionArea : MonoBehaviour
+public class FleeDetectionArea : MonoBehaviour
 {
     [SerializeField] private Transform eyeOrigin;
     [SerializeField] private bool canSeeTarget;
-    private CharacterAIChasePlayer characterAI;
+    private WanderingNpc characterAI;
 
     private void Awake()
     {
-        characterAI = GetComponentInParent<CharacterAIChasePlayer>();
+        characterAI = GetComponentInParent<WanderingNpc>();
     }
 
     private void OnTriggerExit(Collider other)
@@ -41,16 +41,16 @@ public class AIDetectionArea : MonoBehaviour
             if (hasHit && hitInfo.collider.transform == character.transform)
             {
                 canSeeTarget = true;
-                ChaseTarget(character.transform);
+                FleeFromTarget(character.transform);
             }
         }
     }
 
-    private void ChaseTarget(Transform target)
+    private void FleeFromTarget(Transform target)
     {
-        ChaseNpcState chaseState = new ChaseNpcState(characterAI);
-        chaseState.targetToChase = target;
+        FleeNpcState fleeState = new(characterAI);
+        fleeState.target = target;
 
-        characterAI.ChangeState(chaseState);
+        characterAI.ChangeState(fleeState);
     }
 }

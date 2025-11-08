@@ -4,7 +4,7 @@ public class IdleNpcState : NpcState
 {
     private float timer = 0;
 
-    public IdleNpcState(CharacterAIChasePlayer owner) : base(owner)
+    public IdleNpcState(WanderingNpc owner) : base(owner)
     {
     }
 
@@ -25,7 +25,7 @@ public class IdleNpcState : NpcState
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            character.ChangeState(new WanderNpcState(character));
+            npc.ChangeState(new WanderNpcState(npc));
         }
     }
 }
