@@ -26,8 +26,6 @@ public class PaintInventory : MonoBehaviour
         numOfExistPaints = existPaints.Count;
         selectedPaint = existPaints[0];
 
-        CollectionManager.Instance.RegisterInventory(this);
-
         actualKeyCodeToIndexMap = new();
         foreach (KeyCodeIndexPair pair in keyCodeToIndexMap)
         {
@@ -42,6 +40,8 @@ public class PaintInventory : MonoBehaviour
 
     private void Start()
     {
+        CollectionManager.Instance.RegisterInventory(this);
+
         for (int i = 0; i < paintAvailability.Count; i++)
         {
             if (paintAvailability[i])

@@ -9,17 +9,35 @@ public class Paintball : Projectile
 
     protected override void OnCollisionEnter(Collision collision)
     {
+        //Debug.Log("Paintball Hit");
         base.OnCollisionEnter(collision);
 
-        Collider[] paintableColliders = Physics.OverlapSphere(gameObject.transform.position, effectRadius, paintableMask);
+        Vector3 overlapSpherePosition = transform.position;
 
         OnDespawn();
+
+        Collider[] paintableColliders = Physics.OverlapSphere(overlapSpherePosition, effectRadius, paintableMask);
 
         foreach (Collider collider in paintableColliders)
         {
             if (!collider.gameObject.TryGetComponent<Paintable>(out Paintable paintable))
-                continue;
-            paintable.SetColour(paintColor);
+            {
+                //Debug.Log("Didn't get a Paintable");
+            }
+            if (paintable != null)
+            {
+                paintable.SetColour(paintColor);
+            }
+            
+
+            if (!collider.gameObject.TryGetComponent<Defeatable>(out Defeatable defeatable))
+            {
+                //Debug.Log("Didn't get a Defeatable");
+            }
+            if (defeatable != null)
+            {
+                defeatable.OnHit();
+            }
         }
     }
 

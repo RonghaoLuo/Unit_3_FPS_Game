@@ -358,8 +358,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponTip: {fileID: 5047324392374065646}
-  shootSpeed: 10
-  toShoot: 0
+  shootSpeed: 20
+  toShoot: 1
 --- !u!114 &7932446350015283606
 MonoBehaviour:
   m_ObjectHideFlags: 0

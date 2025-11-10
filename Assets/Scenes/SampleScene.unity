@@ -8306,10 +8306,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prey
       objectReference: {fileID: 0}
-    - target: {fileID: 5714915717770990913, guid: 933bbddb2eb8ef5438fb978768eb481d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8184140665170033349, guid: 933bbddb2eb8ef5438fb978768eb481d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.904112
@@ -10866,10 +10862,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1136045410094225472, guid: cac1f2c38f3aae44abdb07cfa9d4d725, type: 3}
-      propertyPath: toShoot
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1136045410094225472, guid: cac1f2c38f3aae44abdb07cfa9d4d725, type: 3}
       propertyPath: poolOfBullets
       value: 
       objectReference: {fileID: 247593396}
@@ -10879,7 +10871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5556509994417442762, guid: cac1f2c38f3aae44abdb07cfa9d4d725, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -77.84
+      value: -14.17
       objectReference: {fileID: 0}
     - target: {fileID: 5556509994417442762, guid: cac1f2c38f3aae44abdb07cfa9d4d725, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10887,7 +10879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5556509994417442762, guid: cac1f2c38f3aae44abdb07cfa9d4d725, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.81
+      value: 23.51
       objectReference: {fileID: 0}
     - target: {fileID: 5556509994417442762, guid: cac1f2c38f3aae44abdb07cfa9d4d725, type: 3}
       propertyPath: m_LocalRotation.w
