@@ -5,8 +5,6 @@ using UnityEngine.AI;
 
 public class NpcManager : MonoBehaviour
 {
-    [SerializeField] private List<NavMeshSurface> navMeshes;
-
     private Dictionary<GameObject, StateNpc> gameObjectToNpcMap = new();
 
     public static NpcManager Instance { get; private set; }
@@ -35,6 +33,11 @@ public class NpcManager : MonoBehaviour
         }
 
         npc.SetPosition(position);
+    }
+
+    public void SpawnNpcRandomlyOnSpawnPoints(Transform[] spawnPoints)
+    {
+        SpawnNpc(spawnPoints[ Random.Range( 0, spawnPoints.Length - 1 ) ].position);
     }
 
     public void DespawnNpc(StateNpc npc)
