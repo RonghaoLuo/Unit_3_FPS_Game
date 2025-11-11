@@ -10,18 +10,18 @@ public class IdleNpcState : NpcState
 
     public override void OnStateEnter()
     {
-        Debug.Log("Start Idle");
+        //Debug.Log("Start Idle");
         timer = 1f;// Random.Range(2f, 4f);
     }
 
     public override void OnStateExit()
     {
-        Debug.Log("Not Idle anymore");
+        //Debug.Log("Not Idle anymore");
     }
 
     public override void OnStateRun()
     {
-        Debug.Log("waiting for command");
+        //Debug.Log("waiting for command");
         timer -= Time.deltaTime;
         if (timer <= 0)
         {

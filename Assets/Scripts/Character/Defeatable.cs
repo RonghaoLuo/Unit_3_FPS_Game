@@ -2,6 +2,13 @@ using UnityEngine;
 
 public class Defeatable : MonoBehaviour
 {
+    private IPoolable poolable;
+
+    private void Awake()
+    {
+        poolable = gameObject.GetComponent<IPoolable>();
+    }
+
     public void OnHit()
     {
         Debug.Log("Defeatable Hit");
@@ -10,8 +17,7 @@ public class Defeatable : MonoBehaviour
 
     private void OnDeath()
     {
-        gameObject.SetActive(false);
-        Invoke("SetActive", 3f);
+        PoolManager.Instance.ReturnToPool(poolable);
         GenerateDeathEffect();
         DropItem();
     }

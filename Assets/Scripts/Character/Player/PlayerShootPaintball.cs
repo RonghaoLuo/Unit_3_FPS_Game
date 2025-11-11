@@ -14,6 +14,6 @@ public class PlayerShootPaintball : MouseClickStrategy
 
     public void Shoot()
     {
-        GameObject spawnedProjectile = PoolManager.Instance.Spawn(toShoot, weaponTip.transform, shootSpeed);
+        PoolManager.Instance.Spawn(toShoot, weaponTip.transform, shootSpeed);
     }
 }

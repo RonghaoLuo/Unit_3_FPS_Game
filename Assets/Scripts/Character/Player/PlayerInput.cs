@@ -89,7 +89,10 @@ public class PlayerInput : MonoBehaviour
         }
 
         #endregion
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            NpcManager.Instance.SpawnNpc(transform.position);
+        }
     }
-
-
 }

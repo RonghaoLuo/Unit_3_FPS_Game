@@ -252,6 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myAgent: {fileID: 4337443206690175756}
   destination: {x: -5, y: 0, z: 3}
+  type: 4
 --- !u!114 &7253431287304095371
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using static UnityEditor.PlayerSettings;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 /// <summary>
 /// Can pool any GameObject
@@ -54,10 +56,13 @@ public class PoolManager : MonoBehaviour
             Debug.LogError($"[PoolManager] No pool for {type}");
             return null;
         }
+        Debug.Log("begfore retrieving a gameobject from a pool");
         GameObject go = pool.Get();
+        Debug.Log("retrieved a gameobject from a pool");
 
         go.transform.position = pos;
         go.transform.rotation = rot;
+        Debug.Log("finished setting position and rotation of a poolable");
 
         if (go.TryGetComponent<Rigidbody>(out var rb)) 
             rb.linearVelocity = velocity;
@@ -70,6 +75,20 @@ public class PoolManager : MonoBehaviour
         return Spawn(type, shootOrigin.transform.position, 
             shootOrigin.transform.rotation, 
             shootOrigin.forward * shootSpeed);
+    }
+
+    public GameObject Spawn(PoolableType type)
+    {
+        if (!poolMap.TryGetValue(type, out var pool))
+        {
+            Debug.LogError($"[PoolManager] No pool for {type}");
+            return null;
+        }
+        Debug.Log("begfore retrieving a gameobject from a pool");
+        GameObject go = pool.Get();
+        Debug.Log("retrieved a gameobject from a pool");
+
+        return go;
     }
 
     public void ReturnToPool(IPoolable poolable)
@@ -88,5 +107,5 @@ public class PoolManager : MonoBehaviour
 
 public enum PoolableType
 {
-    Ball, Paintball, Bullet, Enemy
+    Ball, Paintball, Bullet, Enemy, Prey
 }

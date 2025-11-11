@@ -3,9 +3,9 @@ using UnityEngine;
 public abstract class Projectile : MonoBehaviour, IPoolable
 {
     [SerializeField] protected Rigidbody rb;
-    [SerializeField] protected float lifeTime = 5f;
-    [SerializeField] protected float spawnTime;
-    [SerializeField] private PoolableType type;
+    [SerializeField] protected float maxLifeTime = 5f;
+    [SerializeField] protected float lifeTime;
+    [SerializeField] protected PoolableType type;
 
     public PoolableType Type => type;
 
@@ -19,7 +19,7 @@ public abstract class Projectile : MonoBehaviour, IPoolable
     public virtual void OnSpawn()
     {
         gameObject.SetActive(true);
-        spawnTime = Time.time;
+        lifeTime = Time.time;
 
         if (rb != null) 
         { 
@@ -45,13 +45,18 @@ public abstract class Projectile : MonoBehaviour, IPoolable
 
     protected virtual void Update()
     {
-        if (Time.time - spawnTime >= lifeTime) 
+        if (Time.time - lifeTime >= maxLifeTime) 
             PoolManager.Instance.ReturnToPool(this);
     }
 
     protected virtual void OnCollisionEnter(Collision collision)
     {
         // apply damage/effects...
+    }
+
+    public void InitializePoolable()
+    {
+        
     }
 }
 
