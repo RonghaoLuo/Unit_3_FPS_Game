@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private float gameCountdown;
     [SerializeField] private bool gameRunning;
+    [SerializeField] private bool countdownRunning;
     [SerializeField] private PlayableDirector introDirector;
     [SerializeField] private PlayerInput playerInput;
 
@@ -56,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (gameCountdown >= 0 && gameRunning)
+        if (gameCountdown >= 0 && gameRunning && countdownRunning)
         {
             gameCountdown -= Time.deltaTime;
             OnCountdownChange?.Invoke(gameCountdown);
@@ -79,6 +80,10 @@ public class GameManager : MonoBehaviour
         {
             TogglePauseGame();
         }
+        //if (Input.GetKeyDown(KeyCode.T))
+        //{
+        //    countdownRunning = !countdownRunning;
+        //}
 
         #endregion
     }
@@ -104,6 +109,7 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         gameRunning = false;
+        countdownRunning = false;
         OnGameOver?.Invoke();
 
         Cursor.visible = true;

@@ -68,13 +68,15 @@ public class PlayerInput : MonoBehaviour
                 currentMouseClickStrategy.ExecuteStrategy();
             }
         }
-        if (commandGiver != null)
-        {
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                commandGiver.ExecuteStrategy();
-            }
-        }
+        #region Command Giver
+        //if (commandGiver != null)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.C))
+        //    {
+        //        commandGiver.ExecuteStrategy();
+        //    }
+        //}
+        #endregion
 
         #region Select Colours
         if (paintInventory != null)
@@ -90,9 +92,11 @@ public class PlayerInput : MonoBehaviour
 
         #endregion
 
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            NpcManager.Instance.SpawnNpc(transform.position);
-        }
+        #region Testing
+        //if (Input.GetKeyDown(KeyCode.O))
+        //{
+        //    NpcManager.Instance.SpawnNpc(transform.position);
+        //}
+        #endregion
     }
 }
