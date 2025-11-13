@@ -90,13 +90,12 @@ public class NpcManager : MonoBehaviour
     {
         while (true)
         {
-            if (numOfPreysSpawned >= maxNumOfPrey)
+            if (numOfPreysSpawned < maxNumOfPrey)
             {
-                continue;
+                SpawnNpcRandomlyOnSpawnPoints(spawnPoints);
+                yield return new WaitForSeconds(preySpawnFrequency);
             }
-
-            SpawnNpcRandomlyOnSpawnPoints(spawnPoints);
-            yield return new WaitForSeconds(preySpawnFrequency);
+            yield return null;
         }
     }
 

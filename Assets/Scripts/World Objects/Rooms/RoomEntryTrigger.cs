@@ -6,7 +6,11 @@ public class RoomEntryTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        myRoom.OnRoomEntryTrigger();
-        gameObject.SetActive(false);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            //Debug.Log("Player Entered Trigger");
+            myRoom.OnRoomEntryTrigger();
+            gameObject.SetActive(false);
+        }
     }
 }

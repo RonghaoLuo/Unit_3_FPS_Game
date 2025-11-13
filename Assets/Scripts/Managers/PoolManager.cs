@@ -28,6 +28,7 @@ public class PoolManager : MonoBehaviour
 
     void Awake()
     {
+        //Debug.Log("Pool Manager Woke");
         if (Instance == null)
         {
             Instance = this;

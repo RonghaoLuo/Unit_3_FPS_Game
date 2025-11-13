@@ -1040,17 +1040,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219541012}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &247593396 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8582461420454041495, guid: d4dc4793aebd00b43817a35bf768d159, type: 3}
-  m_PrefabInstance: {fileID: 2021076510919001301}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08d8a2264c456ed43be21b6c9c72bdac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &251583837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,6 +1079,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3151845709983520767, guid: d5daa6be329eb484287819fc0f4659db, type: 3}
+      propertyPath: challengeCountdown
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 3413669457090457550, guid: d5daa6be329eb484287819fc0f4659db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6951,63 +6944,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea1a90687ec3002489e37d3e5320a7b3, type: 3}
---- !u!1001 &2021076510919001301
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3052209709109969526, guid: d4dc4793aebd00b43817a35bf768d159, type: 3}
-      propertyPath: m_Name
-      value: Bullets Object Pool
-      objectReference: {fileID: 0}
-    - target: {fileID: 6773052338622140529, guid: d4dc4793aebd00b43817a35bf768d159, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.98275
-      objectReference: {fileID: 0}
-    - target: {fileID: 6773052338622140529, guid: d4dc4793aebd00b43817a35bf768d159, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6773052338622140529, guid: d4dc4793aebd00b43817a35bf768d159, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.31781
-      objectReference: {fileID: 0}
-    - target: {fileID: 6773052338622140529, guid: d4dc4793aebd00b43817a35bf768d159, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6773052338622140529, guid: d4dc4793aebd00b43817a35bf768d159, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6773052338622140529, guid: d4dc4793aebd00b43817a35bf768d159, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6773052338622140529, guid: d4dc4793aebd00b43817a35bf768d159, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6773052338622140529, guid: d4dc4793aebd00b43817a35bf768d159, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6773052338622140529, guid: d4dc4793aebd00b43817a35bf768d159, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6773052338622140529, guid: d4dc4793aebd00b43817a35bf768d159, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d4dc4793aebd00b43817a35bf768d159, type: 3}
 --- !u!1001 &2668633391929497043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7538,7 +7474,7 @@ PrefabInstance:
     - target: {fileID: 1136045410094225472, guid: cac1f2c38f3aae44abdb07cfa9d4d725, type: 3}
       propertyPath: poolOfBullets
       value: 
-      objectReference: {fileID: 247593396}
+      objectReference: {fileID: 0}
     - target: {fileID: 5382061451887235705, guid: cac1f2c38f3aae44abdb07cfa9d4d725, type: 3}
       propertyPath: m_Name
       value: Player
@@ -7872,7 +7808,6 @@ SceneRoots:
   - {fileID: 3324806634581818513}
   - {fileID: 8690331567605127856}
   - {fileID: 1755817746}
-  - {fileID: 2021076510919001301}
   - {fileID: 264113934}
   - {fileID: 8302870159889494725}
   - {fileID: 1275615430}
