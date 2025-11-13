@@ -11,6 +11,7 @@ public class NpcManager : MonoBehaviour
     [SerializeField] int numOfPreysSpawned;
 
     private Dictionary<GameObject, StateNpc> gameObjectToNpcMap = new();
+    private Coroutine runningSpawnCoroutine;
 
     public static NpcManager Instance { get; private set; }
 
@@ -78,24 +79,27 @@ public class NpcManager : MonoBehaviour
     #region Coroutines
     private void StartPreySpawning(Transform[] spawnPoints)
     {
-        StartCoroutine(PreySpawningCoroutine(spawnPoints));
+        runningSpawnCoroutine = StartCoroutine(PreySpawningCoroutine(spawnPoints));
     }
 
     private void StopPreySpawning()
     {
-        StopCoroutine(PreySpawningCoroutine(null));
+        StopCoroutine(runningSpawnCoroutine);
     }
 
     IEnumerator PreySpawningCoroutine(Transform[] spawnPoints)
     {
+        WaitForSeconds wait = new WaitForSeconds(preySpawnFrequency);
+
         while (true)
         {
             if (numOfPreysSpawned < maxNumOfPrey)
             {
                 SpawnNpcRandomlyOnSpawnPoints(spawnPoints);
-                yield return new WaitForSeconds(preySpawnFrequency);
             }
-            yield return null;
+
+            // Always wait — even if you didn't spawn
+            yield return wait;
         }
     }
 

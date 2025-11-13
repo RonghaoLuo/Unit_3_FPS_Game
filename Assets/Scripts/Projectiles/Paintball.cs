@@ -28,16 +28,17 @@ public class Paintball : Projectile
             {
                 paintable.SetColour(paintColor);
             }
-            
 
-            if (!collider.gameObject.TryGetComponent<Defeatable>(out Defeatable defeatable))
+
+            if (!collider.gameObject.TryGetComponent<IDefeatable>(out IDefeatable defeatable))
             {
-                //Debug.Log("Didn't get a Defeatable");
+                Debug.Log("Didn't get a Defeatable");
             }
             if (defeatable != null)
             {
                 defeatable.OnHit();
             }
+
         }
     }
 

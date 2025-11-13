@@ -317,7 +317,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn point
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
@@ -1052,7 +1052,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn point (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
@@ -1082,6 +1082,10 @@ PrefabInstance:
     - target: {fileID: 3151845709983520767, guid: d5daa6be329eb484287819fc0f4659db, type: 3}
       propertyPath: challengeCountdown
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151845709983520767, guid: d5daa6be329eb484287819fc0f4659db, type: 3}
+      propertyPath: debugStartGameOnStart
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3413669457090457550, guid: d5daa6be329eb484287819fc0f4659db, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2157,7 +2161,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn point (6)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
@@ -2188,7 +2192,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn point (7)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
@@ -2219,7 +2223,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn point (5)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
@@ -3040,7 +3044,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn point (3)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
@@ -5533,7 +5537,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn point (2)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
@@ -6158,7 +6162,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn point (4)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
@@ -7109,6 +7113,10 @@ PrefabInstance:
     - target: {fileID: 1431109699710411483, guid: 13721180d85767c408aa2eb512eeee1e, type: 3}
       propertyPath: m_Name
       value: Room Entry Trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 1431109699710411483, guid: 13721180d85767c408aa2eb512eeee1e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2888461977054313738, guid: 13721180d85767c408aa2eb512eeee1e, type: 3}
       propertyPath: m_LocalPosition.x

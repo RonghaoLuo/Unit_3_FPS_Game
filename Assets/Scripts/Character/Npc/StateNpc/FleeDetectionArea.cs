@@ -22,9 +22,7 @@ public class FleeDetectionArea : MonoBehaviour
         if (canSeeTarget == false)
         {
             RaycastHit hitInfo = new RaycastHit();
-            CharacterController character = other.GetComponent<CharacterController>();
-
-            if (character == null)
+            if (!other.TryGetComponent<CharacterController>(out var character))
             {
                 return;
             }
@@ -35,7 +33,7 @@ public class FleeDetectionArea : MonoBehaviour
 
             if (hasHit)
             {
-                Debug.Log("Raycast is hitting " + hitInfo.collider.name);
+                Debug.Log("Flee Detection Raycast is hitting " + hitInfo.collider.name);
             }
 
             if (hasHit && hitInfo.collider.transform == character.transform)

@@ -189,8 +189,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8184140665170033349}
   - component: {fileID: 4337443206690175756}
-  - component: {fileID: 7466676576760370214}
   - component: {fileID: 8674792097310741270}
+  - component: {fileID: -8230591082828151976}
   m_Layer: 0
   m_Name: Prey
   m_TagString: Untagged
@@ -237,21 +237,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7466676576760370214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5714915717770990913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c80eb99f0cf24f428b50e3949be627e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myAgent: {fileID: 4337443206690175756}
-  destination: {x: -5, y: 0, z: 3}
-  type: 4
 --- !u!65 &8674792097310741270
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -273,6 +258,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5, y: 2.25, z: 1.5}
   m_Center: {x: 0, y: 1.125, z: 0}
+--- !u!114 &-8230591082828151976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5714915717770990913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0c1cd4cac82b8429f665f768d03cf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Prey
+  myAgent: {fileID: 4337443206690175756}
+  destination: {x: 0, y: 0, z: 0}
+  type: 4
 --- !u!1 &7672053084905510067
 GameObject:
   m_ObjectHideFlags: 0

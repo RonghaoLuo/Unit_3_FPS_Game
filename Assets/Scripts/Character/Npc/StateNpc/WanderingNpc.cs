@@ -4,12 +4,12 @@ using UnityEngine.AI;
 public class WanderingNpc : StateNpc
 {
 
-    void Start()
+    protected virtual void Start()
     {
         //InvokeRepeating("FollowTarget", 1, 5);
         ChangeState(new WanderNpcState(this));
     }
-    void Update()
+    protected virtual void Update()
     {
         if (currentState != null)
         {

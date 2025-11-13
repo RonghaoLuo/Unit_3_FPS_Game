@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float challengeCountdown;
     [SerializeField] private bool gameRunning;
     [SerializeField] private bool countdownRunning;
+    [SerializeField] private bool debugStartGameOnStart = false;
+    [SerializeField] private bool levelCompleted = false;
     [SerializeField] private PlayableDirector introDirector;
     [SerializeField] private PlayerInput playerInput;
 
@@ -52,6 +54,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         gameCountdownInitialNumber = challengeCountdown;
+
+        // For Testing
+        if (debugStartGameOnStart) DebugStartGame();
     }
 
     private void OnDestroy()
@@ -127,7 +132,11 @@ public class GameManager : MonoBehaviour
 
     public void ChallengeComplete()
     {
+        // To prevent duplicate calls
+        if (levelCompleted) return;
+
         StopChallenge();
+        levelCompleted = true;
         // do some effect
         // win cutscene
         //win screen

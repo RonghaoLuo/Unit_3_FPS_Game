@@ -57,13 +57,13 @@ public class PoolManager : MonoBehaviour
             Debug.LogError($"[PoolManager] No pool for {type}");
             return null;
         }
-        Debug.Log("begfore retrieving a gameobject from a pool");
+        //Debug.Log("before retrieving a gameobject from a pool");
         GameObject go = pool.Get();
-        Debug.Log("retrieved a gameobject from a pool");
+        //Debug.Log("retrieved a gameobject from a pool");
 
         go.transform.position = pos;
         go.transform.rotation = rot;
-        Debug.Log("finished setting position and rotation of a poolable");
+        //Debug.Log("finished setting position and rotation of a poolable");
 
         if (go.TryGetComponent<Rigidbody>(out var rb)) 
             rb.linearVelocity = velocity;
@@ -85,9 +85,9 @@ public class PoolManager : MonoBehaviour
             Debug.LogError($"[PoolManager] No pool for {type}");
             return null;
         }
-        Debug.Log("begfore retrieving a gameobject from a pool");
+        //Debug.Log("before retrieving a gameobject from a pool");
         GameObject go = pool.Get();
-        Debug.Log("retrieved a gameobject from a pool");
+        //Debug.Log("retrieved a gameobject from a pool");
 
         return go;
     }

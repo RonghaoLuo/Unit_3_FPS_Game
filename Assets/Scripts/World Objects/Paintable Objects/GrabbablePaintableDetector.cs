@@ -25,10 +25,10 @@ public class GrabbablePaintableDetector : PaintableDetector
         // Filter for only paintables
         if (!other.TryGetComponent<Paintable>(out var paintable))
         {
-            Debug.Log(other.gameObject.name + " is not paintable");
+            //Debug.Log(other.gameObject.name + " is not paintable");
             return;
         }
-        Debug.Log(other.gameObject.name + " is paintable");
+        //Debug.Log(other.gameObject.name + " is paintable");
         // If this paintable has correct colour, output true regardless of other paintables
         if (paintable.PaintColour == correctColour)
         {

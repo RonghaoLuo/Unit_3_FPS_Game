@@ -3,8 +3,6 @@ using UnityEngine;
 
 public interface IDefeatable
 {
-    public IPoolable Poolable { get; }
-
     public void OnHit();
 }
 
