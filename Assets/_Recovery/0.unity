@@ -2716,7 +2716,6 @@ Transform:
   m_Children:
   - {fileID: 1048217763}
   - {fileID: 33747929}
-  - {fileID: 1949416634}
   - {fileID: 1940382615}
   - {fileID: 2058936049}
   - {fileID: 983155677}
@@ -5911,84 +5910,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7039736062738575665, guid: 37979e03f0f27164b928d815748a1e7a, type: 3}
   m_PrefabInstance: {fileID: 1940382614}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1949416633
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 887903766}
-    m_Modifications:
-    - target: {fileID: 1835196975750859236, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
-      propertyPath: m_Name
-      value: Paintable Detector Handler (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893572394493341721, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 11.538628
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893572394493341721, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -5.14711
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893572394493341721, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 8.85513
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893572394493341721, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893572394493341721, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893572394493341721, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893572394493341721, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893572394493341721, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893572394493341721, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893572394493341721, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066656767547920187, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
-      propertyPath: targets.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066656767547920187, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
-      propertyPath: detectors.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066656767547920187, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
-      propertyPath: 'targets.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2106438617}
-    - target: {fileID: 5066656767547920187, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
-      propertyPath: 'detectors.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2058936050}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
---- !u!4 &1949416634 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4893572394493341721, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
-  m_PrefabInstance: {fileID: 1949416633}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1953260421
 GameObject:
   m_ObjectHideFlags: 0
@@ -6258,17 +6179,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 575714742911395094, guid: 4b0d1e3c688478d4e9173564ac6c48fa, type: 3}
   m_PrefabInstance: {fileID: 2058936048}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2058936050 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9112085576123078609, guid: 4b0d1e3c688478d4e9173564ac6c48fa, type: 3}
-  m_PrefabInstance: {fileID: 2058936048}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e668fd5d6bd3b2f4e8d057647b4c6157, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PaintableDetector
 --- !u!1 &2066900243
 GameObject:
   m_ObjectHideFlags: 0
@@ -6433,17 +6343,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5066656767547920187, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
-      propertyPath: targets.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066656767547920187, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
       propertyPath: detectors.Array.size
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5066656767547920187, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
-      propertyPath: 'targets.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2106438617}
     - target: {fileID: 5066656767547920187, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
       propertyPath: 'detectors.Array.data[0]'
       value: 
@@ -6486,17 +6388,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4893572394493341721, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
   m_PrefabInstance: {fileID: 2083048147}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2106438617 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5266555198630831014, guid: 37979e03f0f27164b928d815748a1e7a, type: 3}
-  m_PrefabInstance: {fileID: 1940382614}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d31345bb440d4224b98154adf47cf8c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2113471161
 GameObject:
   m_ObjectHideFlags: 0
@@ -7345,10 +7236,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 121140161362297487, guid: 7f5d668369a2cbc4283f3d90efbe3c0f, type: 3}
-      propertyPath: maxNumOfPrey
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4899733758439152404, guid: 7f5d668369a2cbc4283f3d90efbe3c0f, type: 3}
       propertyPath: m_Name
       value: Npc Manager
@@ -7603,14 +7490,6 @@ PrefabInstance:
     - target: {fileID: 463931974749177830, guid: 99f2edb141e6d244fa4e5c3e93cc9bb5, type: 3}
       propertyPath: m_Name
       value: PoolManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5195731459440635177, guid: 99f2edb141e6d244fa4e5c3e93cc9bb5, type: 3}
-      propertyPath: definedPools.Array.data[0].initialSize
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5195731459440635177, guid: 99f2edb141e6d244fa4e5c3e93cc9bb5, type: 3}
-      propertyPath: definedPools.Array.data[1].initialSize
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8402261384545460538, guid: 99f2edb141e6d244fa4e5c3e93cc9bb5, type: 3}
       propertyPath: m_LocalPosition.x

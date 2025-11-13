@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1835196975750859236
+--- !u!1 &6113456715910502611
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4893572394493341721}
-  - component: {fileID: 5066656767547920187}
+  - component: {fileID: 802523116894200744}
+  - component: {fileID: 3809517700552958626}
   m_Layer: 0
-  m_Name: Paintable Detector Handler
+  m_Name: Room Keeper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!4 &4893572394493341721
+--- !u!4 &802523116894200744
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1835196975750859236}
+  m_GameObject: {fileID: 6113456715910502611}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.38319, y: 0, z: 39.84937}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5066656767547920187
+--- !u!114 &3809517700552958626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1835196975750859236}
+  m_GameObject: {fileID: 6113456715910502611}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2478afc4fb413a49a2c44dc453c0979, type: 3}
+  m_Script: {fileID: 11500000, guid: b0629612620ea464c8c3304406067ed0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MultiSignal
-  OnOutputTrue:
-    m_PersistentCalls:
-      m_Calls: []
-  detectors: []
-  targets: []
-  totalDetectors: 0
-  totalTrues: 0
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKeeper
+  spawnPoints: []

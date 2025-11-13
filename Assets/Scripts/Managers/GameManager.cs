@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Playables;
@@ -13,8 +14,10 @@ public class GameManager : MonoBehaviour
     public Action<float> OnCountdownChange;
     public Action OnTogglePauseGame;
     public Action OnResetManagers;
+    public Action<Transform[]> OnPreySpawningBegin;
+    public Action OnPreySpawningEnd;
 
-    [SerializeField] private float gameCountdown;
+    [SerializeField] private float challengeCountdown;
     [SerializeField] private bool gameRunning;
     [SerializeField] private bool countdownRunning;
     [SerializeField] private PlayableDirector introDirector;
@@ -48,7 +51,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        gameCountdownInitialNumber = gameCountdown;
+        gameCountdownInitialNumber = challengeCountdown;
     }
 
     private void OnDestroy()
@@ -57,14 +60,15 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (gameCountdown >= 0 && gameRunning && countdownRunning)
+        // For Challenge
+        if (challengeCountdown >= 0 && gameRunning && countdownRunning)
         {
-            gameCountdown -= Time.deltaTime;
-            OnCountdownChange?.Invoke(gameCountdown);
+            challengeCountdown -= Time.deltaTime;
+            OnCountdownChange?.Invoke(challengeCountdown);
 
-            if (gameCountdown < 0)
+            if (challengeCountdown < 0)
             {
-                GameOver();
+                ChallengeFail();
             }
         }
 
@@ -106,6 +110,43 @@ public class GameManager : MonoBehaviour
         OnTogglePauseGame?.Invoke();
     }
 
+    public void StartChallenge(Transform[] spawnPoints)
+    {
+        // do some effects
+        Debug.Log("Starting Challenge...");
+
+        StartPreySpawning(spawnPoints);
+        countdownRunning = true;
+    }
+
+    public void StopChallenge()
+    {
+        StopPreySpawning();
+        countdownRunning = false;
+    }
+
+    public void ChallengeComplete()
+    {
+        StopChallenge();
+        // do some effect
+        // win cutscene
+        //win screen
+        Debug.Log("You Won");
+
+        GameOver();
+    }
+
+    public void ChallengeFail()
+    {
+        StopChallenge();
+        // do some effect
+        // challenge lost cutscene
+        // challenge lost screen
+        Debug.Log("You Lost");
+
+        GameOver();
+    }
+
     private void GameOver()
     {
         gameRunning = false;
@@ -134,9 +175,19 @@ public class GameManager : MonoBehaviour
     {
         OnResetManagers?.Invoke();
 
-        gameCountdown = gameCountdownInitialNumber;
+        challengeCountdown = gameCountdownInitialNumber;
         playerInput = null;
         introDirector = null;
+    }
+
+    private void StartPreySpawning(Transform[] spawnPoints)
+    {
+        OnPreySpawningBegin?.Invoke(spawnPoints);
+    }
+
+    private void StopPreySpawning()
+    {
+        OnPreySpawningEnd?.Invoke();
     }
 
     #region Register
@@ -151,4 +202,5 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+    
 }

@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PaintableDetectorHandler : MonoBehaviour
 {
+    public UnityEvent OnOutputTrue;
+
     [SerializeField] private List<PaintableDetector> detectors = new();
     [SerializeField] private List<Door> targets = new();
 
@@ -49,6 +52,7 @@ public class PaintableDetectorHandler : MonoBehaviour
 
         if (totalTrues == totalDetectors)
         {
+            OnOutputTrue?.Invoke();
             foreach (Door target in targets)
             {
                 target.OpenDoor();
