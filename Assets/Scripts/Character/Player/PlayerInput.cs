@@ -63,7 +63,7 @@ public class PlayerInput : MonoBehaviour
         }
         if (currentMouseClickStrategy != null)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0))
             {
                 currentMouseClickStrategy.ExecuteStrategy();
             }
