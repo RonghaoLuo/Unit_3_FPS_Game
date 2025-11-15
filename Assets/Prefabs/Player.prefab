@@ -358,8 +358,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponTip: {fileID: 5047324392374065646}
-  projectileSpeed: 20
   toShoot: 1
+  baseProjectileSpeed: 10
+  baseShootCooldown: 0.5
+  projectileSpeedMultiplier: 1
+  shootCooldownMultiplier: 1
 --- !u!114 &7932446350015283606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,7 +564,6 @@ GameObject:
   - component: {fileID: 7171975549816857792}
   - component: {fileID: 5338720652345946468}
   - component: {fileID: 1912483401702432496}
-  - component: {fileID: 1781050121431812549}
   m_Layer: 3
   m_Name: Weapon Geometry
   m_TagString: Untagged
@@ -640,27 +642,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1781050121431812549
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6513072832845135836}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7625757497040948126
 GameObject:
   m_ObjectHideFlags: 0

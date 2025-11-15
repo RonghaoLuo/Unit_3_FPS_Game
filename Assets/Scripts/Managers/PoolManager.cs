@@ -39,7 +39,10 @@ public class PoolManager : MonoBehaviour
             Destroy(gameObject); 
             return; 
         }
+    }
 
+    private void Start()
+    {
         for (int i = 0; i < definedPools.Length; i++)
         {
             PoolDefinition def = definedPools[i];

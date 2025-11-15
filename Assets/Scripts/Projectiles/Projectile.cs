@@ -16,6 +16,9 @@ public abstract class Projectile : MonoBehaviour, IPoolable
         rb = GetComponent<Rigidbody>();
     }
 
+    /// <summary>
+    /// USE POOL MANAGER
+    /// </summary>
     public virtual void OnSpawn()
     {
         gameObject.SetActive(true);
@@ -30,6 +33,9 @@ public abstract class Projectile : MonoBehaviour, IPoolable
         // reset any visual or owner info here
     }
 
+    /// <summary>
+    /// USE POOL MANAGER
+    /// </summary>
     public virtual void OnDespawn()
     {
         // Stop particle systems, disable effects

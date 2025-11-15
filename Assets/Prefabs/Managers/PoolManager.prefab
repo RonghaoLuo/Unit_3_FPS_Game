@@ -47,7 +47,7 @@ MonoBehaviour:
   definedPools:
   - type: 1
     prefab: {fileID: 4438613472572115555, guid: c135653221c46df4da11a5d77527d2d4, type: 3}
-    initialSize: 10
+    initialSize: 100
   - type: 4
     prefab: {fileID: 5714915717770990913, guid: 933bbddb2eb8ef5438fb978768eb481d, type: 3}
-    initialSize: 1
+    initialSize: 80

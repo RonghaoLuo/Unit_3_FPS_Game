@@ -14,7 +14,7 @@ public class Paintball : Projectile
 
         Vector3 overlapSpherePosition = transform.position;
 
-        OnDespawn();
+        PoolManager.Instance.ReturnToPool(this);
 
         Collider[] paintableColliders = Physics.OverlapSphere(overlapSpherePosition, effectRadius, paintableMask);
 
