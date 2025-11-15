@@ -16,6 +16,15 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private CommandGiver commandGiver;
     [SerializeField] private PaintInventory paintInventory;
 
+    #region Testing
+    [Header("Test Multipliers")]
+    [SerializeField] private float speed;
+    [SerializeField] private float size;
+    [SerializeField] private float effectRadius;
+    [SerializeField] private float cooldown;
+    [SerializeField] private float duration;
+    #endregion
+
     void Start()
     {
         GameManager.Instance.RegisterPlayerInput(this);
@@ -96,6 +105,11 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             NpcManager.Instance.SpawnNpc(transform.position);
+        }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            shooting.StartPowerUp(speed, size, effectRadius, cooldown, duration, true);
         }
         #endregion
     }

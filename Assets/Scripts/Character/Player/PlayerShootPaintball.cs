@@ -3,38 +3,93 @@ using UnityEngine;
 public class PlayerShootPaintball : MouseClickStrategy
 {
     [SerializeField] private Transform weaponTip;
+    [SerializeField] private PaintInventory inventory;
     [SerializeField] private PoolableType toShoot;
 
     [Header("Base Stats")]
     [SerializeField] private float baseProjectileSpeed = 10f;
     [SerializeField] private float baseShootCooldown = 0.5f;
+    [SerializeField] private float basePaintballSize = 1f;
+    [SerializeField] private float baseEffectRadius = 1f;
 
     [Header("Multipliers")]
     [SerializeField] private float projectileSpeedMultiplier = 1f;
     [SerializeField] private float shootCooldownMultiplier = 1f;
+    [SerializeField] private float paintballSizeMultiplier = 1f;
+    [SerializeField] private float effectRadiusMultiplier = 1f;
+
+    [Header("Toggles")]
+    [SerializeField] private bool shootWithRandomColour;
 
     private float CurrentProjectileSpeed => baseProjectileSpeed * projectileSpeedMultiplier;
     private float CurrentShootCooldown => baseShootCooldown * shootCooldownMultiplier;
+    private float CurrentPaintballSize => basePaintballSize * paintballSizeMultiplier;
+    private float CurrentEffectRadius => baseEffectRadius * effectRadiusMultiplier;
 
 
-    private float cooldownTimer;
+    private float shootCooldownTimer;
+    private float powerUpTimer = 0f;
 
     private void Update()
     {
-        cooldownTimer -= Time.deltaTime;
+        shootCooldownTimer -= Time.deltaTime;
+
+        #region Power Up, Reset Multipliers
+        if (powerUpTimer > 0)
+        {
+            powerUpTimer -= Time.deltaTime;
+
+            if (powerUpTimer <= 0)
+            {
+                ResetMultipliersAndToggles();
+            }
+        }
+        #endregion
+    }
+
+    private void ResetMultipliersAndToggles()
+    {
+        projectileSpeedMultiplier = 1f;
+        paintballSizeMultiplier = 1f;
+        effectRadiusMultiplier = 1f;
+        shootCooldownMultiplier = 1f;
+        shootWithRandomColour = false;
     }
 
     public override void ExecuteStrategy()
     {
-        if (cooldownTimer <= 0f)
+        if (shootCooldownTimer <= 0f)
         {
             Shoot();
-            cooldownTimer = CurrentShootCooldown;
+            shootCooldownTimer = CurrentShootCooldown;
         }
     }
 
     public void Shoot()
     {
-        PoolManager.Instance.Spawn(toShoot, weaponTip.transform, CurrentProjectileSpeed);
+        GameObject go = PoolManager.Instance.Spawn(toShoot, weaponTip.transform, CurrentProjectileSpeed);
+        Paintball paintball = PoolManager.Instance.gameObjectToPaintballMap[go];
+        
+        if (shootWithRandomColour)
+        {
+            paintball.SetColour(inventory.RandomPaint);
+        }
+        else
+        {
+            paintball.SetColour(inventory.SelectedPaint);
+        }
+
+        paintball.SetSize(CurrentPaintballSize);
+        paintball.SetEffectRadius(CurrentEffectRadius);
+    }
+
+    public void StartPowerUp(float projectileSpeed, float size, float effectRafius, float shootCooldown, float duration, bool shootRandomColour)
+    {
+        projectileSpeedMultiplier = projectileSpeed;
+        shootCooldownMultiplier = shootCooldown;
+        paintballSizeMultiplier = size;
+        effectRadiusMultiplier = effectRafius;
+        powerUpTimer = duration;
+        shootWithRandomColour = shootRandomColour;
     }
 }

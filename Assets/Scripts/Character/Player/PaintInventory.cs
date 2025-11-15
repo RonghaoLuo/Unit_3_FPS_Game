@@ -6,7 +6,12 @@ using UnityEngine;
 /// </summary>
 public class PaintInventory : MonoBehaviour
 {
-    public static Color selectedPaint;
+    public Color SelectedPaint { get; private set; }
+
+    public Color RandomPaint
+    {
+        get { return existPaints[Random.Range(0, existPaints.Count - 1)]; }
+    }
 
     public int NumOfExistPaints
     {
@@ -24,7 +29,7 @@ public class PaintInventory : MonoBehaviour
     private void Awake()
     {
         numOfExistPaints = existPaints.Count;
-        selectedPaint = existPaints[0];
+        SelectedPaint = existPaints[0];
 
         actualKeyCodeToIndexMap = new();
         foreach (KeyCodeIndexPair pair in keyCodeToIndexMap)
@@ -55,7 +60,7 @@ public class PaintInventory : MonoBehaviour
     {
         if (existPaints[index] == null || !paintAvailability[index]) return;
 
-        selectedPaint = existPaints[index];
+        SelectedPaint = existPaints[index];
         UIManager.Instance.OnUpdateSelectionOutline.Invoke(index);
     }
 
@@ -75,7 +80,6 @@ public class PaintInventory : MonoBehaviour
         SetPaintAvailability(colour, true);
         UIManager.Instance.OnUpdatePaintIcon?.Invoke(paintToIndexMap[colour], colour);
     }
-
 
     [System.Serializable]
     private struct KeyCodeIndexPair

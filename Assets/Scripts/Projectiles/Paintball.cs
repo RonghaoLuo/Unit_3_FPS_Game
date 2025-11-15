@@ -42,10 +42,25 @@ public class Paintball : Projectile
         }
     }
 
-    public override void OnSpawn()
+    public override void InitializePoolable()
     {
-        paintColor = PaintInventory.selectedPaint;
-        meshRenderer.material.color = paintColor;
-        base.OnSpawn();
+        base.InitializePoolable();
+        PoolManager.Instance.gameObjectToPaintballMap.Add(GameObject, this);
+    }
+
+    public void SetColour(Color colour)
+    {
+        paintColor = colour;
+        meshRenderer.material.color = colour;
+    }
+
+    public void SetSize(float size)
+    {
+        transform.localScale = new(size, size, size);
+    }
+
+    public void SetEffectRadius(float effectRadius)
+    {
+        this.effectRadius = effectRadius;
     }
 }

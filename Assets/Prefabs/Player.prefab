@@ -282,6 +282,9 @@ MonoBehaviour:
   currentMouseClickStrategy: {fileID: 0}
   commandGiver: {fileID: 7932446350015283606}
   paintInventory: {fileID: 1198976141722156847}
+  speed: 0
+  cooldown: 0
+  duration: 0
 --- !u!114 &5212604530566669502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,6 +361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponTip: {fileID: 5047324392374065646}
+  inventory: {fileID: 1198976141722156847}
   toShoot: 1
   baseProjectileSpeed: 10
   baseShootCooldown: 0.5
@@ -388,6 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8e3992f6d9987f4f95b7fccd2b8b549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PaintInventory
+  selectedPaint: {r: 0, g: 0, b: 0, a: 0}
   keyCodeToIndexMap:
   - keyCode: 49
     index: 0

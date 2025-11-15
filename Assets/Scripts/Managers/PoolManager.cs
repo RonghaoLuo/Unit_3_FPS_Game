@@ -26,6 +26,11 @@ public class PoolManager : MonoBehaviour
 
     [SerializeField] private PoolDefinition[] definedPools;
 
+    #region Reference Maps
+    public Dictionary<GameObject, Paintball> gameObjectToPaintballMap = new();
+
+    #endregion
+
     void Awake()
     {
         //Debug.Log("Pool Manager Woke");
