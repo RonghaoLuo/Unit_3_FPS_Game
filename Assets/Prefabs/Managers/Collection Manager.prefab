@@ -44,4 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbeb1a98f2a14c4b952845319410507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectionManager
+  NumOfPowerUpsPresent: 0
+  maxNumOfPowerUps: 3
   playerPaintInventory: {fileID: 0}
+  powerUpPrefab: {fileID: 6855743862815018564, guid: 57149f96291e5fd4b84d49e3ef80f30e, type: 3}

@@ -67,7 +67,8 @@ public class PlayerShootPaintball : MouseClickStrategy
 
     public void Shoot()
     {
-        GameObject go = PoolManager.Instance.Spawn(toShoot, weaponTip.transform, CurrentProjectileSpeed);
+        GameObject go = PoolManager.Instance.Spawn(toShoot, weaponTip.transform, 
+            CurrentProjectileSpeed);
         Paintball paintball = PoolManager.Instance.gameObjectToPaintballMap[go];
         
         if (shootWithRandomColour)
@@ -83,7 +84,8 @@ public class PlayerShootPaintball : MouseClickStrategy
         paintball.SetEffectRadius(CurrentEffectRadius);
     }
 
-    public void StartPowerUp(float projectileSpeed, float size, float effectRafius, float shootCooldown, float duration, bool shootRandomColour)
+    public void StartPowerUp(float projectileSpeed, float size, float effectRafius, 
+        float shootCooldown, float duration, bool shootRandomColour)
     {
         projectileSpeedMultiplier = projectileSpeed;
         shootCooldownMultiplier = shootCooldown;

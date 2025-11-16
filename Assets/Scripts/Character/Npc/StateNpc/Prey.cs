@@ -23,6 +23,6 @@ public class Prey : WanderingNpc, IDefeatable
 
     private void DropItem()
     {
-
+        CollectionManager.Instance.TrySpawnPowerUp(transform.position);
     }
 }
