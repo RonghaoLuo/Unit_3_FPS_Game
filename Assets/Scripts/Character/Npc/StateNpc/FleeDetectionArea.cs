@@ -33,7 +33,7 @@ public class FleeDetectionArea : MonoBehaviour
 
             if (hasHit)
             {
-                Debug.Log("Flee Detection Raycast is hitting " + hitInfo.collider.name);
+                //Debug.Log("Flee Detection Raycast is hitting " + hitInfo.collider.name);
             }
 
             if (hasHit && hitInfo.collider.transform == character.transform)

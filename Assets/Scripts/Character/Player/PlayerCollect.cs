@@ -13,7 +13,7 @@ public class PlayerCollect : MonoBehaviour
             return;
         }
 
-        Debug.Log("Hit a collectible");
+        //Debug.Log("Hit a collectible");
 
         collectible.CollectTo(this);
     }

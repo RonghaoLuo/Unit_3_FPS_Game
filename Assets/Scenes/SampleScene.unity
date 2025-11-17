@@ -5122,11 +5122,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5653679369480910947, guid: ddbe2b5c2487e724e8fd270baa25f9d4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.37352
+      value: 14.31
       objectReference: {fileID: 0}
     - target: {fileID: 5653679369480910947, guid: ddbe2b5c2487e724e8fd270baa25f9d4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.35
+      value: 7.59
       objectReference: {fileID: 0}
     - target: {fileID: 5653679369480910947, guid: ddbe2b5c2487e724e8fd270baa25f9d4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7291,7 +7291,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 121140161362297487, guid: 7f5d668369a2cbc4283f3d90efbe3c0f, type: 3}
       propertyPath: maxNumOfPrey
-      value: 5
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 121140161362297487, guid: 7f5d668369a2cbc4283f3d90efbe3c0f, type: 3}
+      propertyPath: preySpawnFrequency
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4899733758439152404, guid: 7f5d668369a2cbc4283f3d90efbe3c0f, type: 3}
       propertyPath: m_Name
@@ -7567,10 +7571,6 @@ PrefabInstance:
     - target: {fileID: 463931974749177830, guid: 99f2edb141e6d244fa4e5c3e93cc9bb5, type: 3}
       propertyPath: m_Name
       value: PoolManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5195731459440635177, guid: 99f2edb141e6d244fa4e5c3e93cc9bb5, type: 3}
-      propertyPath: definedPools.Array.data[0].initialSize
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8402261384545460538, guid: 99f2edb141e6d244fa4e5c3e93cc9bb5, type: 3}
       propertyPath: m_LocalPosition.x

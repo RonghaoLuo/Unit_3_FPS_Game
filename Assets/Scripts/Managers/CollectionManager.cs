@@ -55,7 +55,7 @@ public class CollectionManager : MonoBehaviour
     {
         if (NumOfPowerUpsPresent >= maxNumOfPowerUps)
         {
-            Debug.LogWarning("Too Many Power Ups Present!");
+            //Debug.LogWarning("Too Many Power Ups Present!");
             return;
         }
 
@@ -64,7 +64,7 @@ public class CollectionManager : MonoBehaviour
 
     public void DespawnPowerUp(PowerUp powerUp)
     {
-        Debug.Log("Despawning Power Up");
+        //Debug.Log("Despawning Power Up");
         Destroy(powerUp.gameObject);
         NumOfPowerUpsPresent--;
     }

@@ -343,7 +343,7 @@ MonoBehaviour:
   weaponTip: {fileID: 5047324392374065646}
   inventory: {fileID: 1198976141722156847}
   toShoot: 1
-  baseProjectileSpeed: 10
+  baseProjectileSpeed: 15
   baseShootCooldown: 0.5
   basePaintballSize: 1
   baseEffectRadius: 1

@@ -14,7 +14,7 @@ public class ChaseNpcState : NpcState
 
     public override void OnStateEnter()
     {
-        Debug.Log("Player Detected. Reacting...");
+        //Debug.Log("Player Detected. Reacting...");
         timer = pathCalculationTime;
     }
 

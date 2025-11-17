@@ -11,7 +11,7 @@ public class PowerUp : MonoBehaviour, ICollectible
 
     public void CollectTo(PlayerCollect playerCollect)
     {
-        Debug.Log("Getting Collected");
+        //Debug.Log("Getting Collected");
         playerCollect.StartPowerUP(speedMultiplier, sizeMultiplier, effectRadiusMultiplier, 
             cooldownMultiplier, duration, shootRainbow);
         CollectionManager.Instance.DespawnPowerUp(this);

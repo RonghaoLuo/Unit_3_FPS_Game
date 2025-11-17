@@ -32,7 +32,7 @@ public class Paintball : Projectile
 
             if (!collider.gameObject.TryGetComponent<IDefeatable>(out IDefeatable defeatable))
             {
-                Debug.Log("Didn't get a Defeatable");
+                //Debug.Log("Didn't get a Defeatable");
             }
             if (defeatable != null)
             {
