@@ -1,6 +1,6 @@
 public abstract class NpcState
 {
-    protected WanderingNpc npc;
+    protected StateNpc npc;
 
     public abstract void OnStateEnter();
 
@@ -8,7 +8,7 @@ public abstract class NpcState
 
     public abstract void OnStateRun();
 
-    public NpcState(WanderingNpc owner)
+    public NpcState(StateNpc owner)
     {
         npc = owner;
     }

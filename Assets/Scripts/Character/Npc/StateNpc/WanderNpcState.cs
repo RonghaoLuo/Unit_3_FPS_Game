@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class WanderNpcState : NpcState
 {
-    public WanderNpcState(WanderingNpc owner) : base(owner)
+    public WanderNpcState(StateNpc owner) : base(owner)
     {
 
     }
 
     public override void OnStateEnter()
     {
-        //.SetAgentDestination(new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)));
+        //npc.SetAgentDestination(npc.transform.position + new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)));
     }
 
     public override void OnStateExit()

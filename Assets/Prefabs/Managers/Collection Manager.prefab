@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectionManager
   NumOfPowerUpsPresent: 0
-  maxNumOfPowerUps: 3
+  maxNumOfPowerUps: 5
   playerPaintInventory: {fileID: 0}
   powerUpPrefab: {fileID: 6855743862815018564, guid: 57149f96291e5fd4b84d49e3ef80f30e, type: 3}

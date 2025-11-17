@@ -4,7 +4,7 @@ public class IdleNpcState : NpcState
 {
     private float timer = 0;
 
-    public IdleNpcState(WanderingNpc owner) : base(owner)
+    public IdleNpcState(StateNpc owner) : base(owner)
     {
     }
 
