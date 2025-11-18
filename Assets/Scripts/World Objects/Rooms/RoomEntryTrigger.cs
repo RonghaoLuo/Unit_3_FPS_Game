@@ -9,7 +9,7 @@ public class RoomEntryTrigger : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             //Debug.Log("Player Entered Trigger");
-            myRoom.OnRoomEntryTrigger();
+            myRoom.EnterRoom();
             gameObject.SetActive(false);
         }
     }
