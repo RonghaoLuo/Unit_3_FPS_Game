@@ -160,5 +160,5 @@ MonoBehaviour:
   sizeMultiplier: 3
   effectRadiusMultiplier: 3
   cooldownMultiplier: 0.25
-  duration: 3
+  duration: 10
   shootRainbow: 1

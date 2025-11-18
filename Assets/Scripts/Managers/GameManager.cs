@@ -147,7 +147,10 @@ public class GameManager : MonoBehaviour
 
     public void ChallengeFail()
     {
+        if (levelCompleted) return;
+
         StopChallenge();
+        levelCompleted = true;
         // do some effect
         // challenge lost cutscene
         // challenge lost screen

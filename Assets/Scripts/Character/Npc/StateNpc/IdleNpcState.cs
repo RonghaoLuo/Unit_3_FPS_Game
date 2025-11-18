@@ -11,7 +11,7 @@ public class IdleNpcState : NpcState
     public override void OnStateEnter()
     {
         //Debug.Log("Start Idle");
-        timer = 1f;// Random.Range(2f, 4f);
+        timer = 2f;// Random.Range(2f, 4f);
     }
 
     public override void OnStateExit()

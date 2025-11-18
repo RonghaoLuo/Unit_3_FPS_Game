@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class WanderNpcState : NpcState
 {
+    private float wanderingRadius = 20f;
+
     public WanderNpcState(StateNpc owner) : base(owner)
     {
 
@@ -9,7 +12,7 @@ public class WanderNpcState : NpcState
 
     public override void OnStateEnter()
     {
-        //npc.SetAgentDestination(npc.transform.position + new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)));
+        npc.SetAgentDestination(GetRandomNavmeshLocation(wanderingRadius));
     }
 
     public override void OnStateExit()
@@ -23,5 +26,21 @@ public class WanderNpcState : NpcState
         {
             npc.ChangeState(new IdleNpcState(npc));
         }
+    }
+
+    Vector3 GetRandomNavmeshLocation(float radius)
+    {
+        // Pick a random direction & distance
+        Vector2 randomDir = Random.insideUnitCircle * radius;
+        Vector3 randomPos = new Vector3(randomDir.x, 0f, randomDir.y) + npc.transform.position;
+
+        // Snap onto NavMesh
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(randomPos, out hit, radius, NavMesh.AllAreas))
+        {
+            return hit.position;
+        }
+
+        return npc.transform.position; // fallback
     }
 }
