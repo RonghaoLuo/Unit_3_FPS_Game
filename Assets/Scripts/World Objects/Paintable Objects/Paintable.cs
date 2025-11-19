@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class Paintable : MonoBehaviour
 {
-    [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private Renderer myRenderer;
     [SerializeField] private Color paintColour = Color.gray5;
+    [SerializeField] private bool enableSetColour = true;
 
     private Color oldColour = Color.gray5;
 
@@ -17,19 +18,31 @@ public class Paintable : MonoBehaviour
 
     private void Awake()
     {
-        paintColour = meshRenderer.material.color;
+        paintColour = myRenderer.material.color;
         oldColour = paintColour;
     }
 
     public void SetColour(Color newColour)
     {
+        if (!enableSetColour) return;
+
         oldColour = paintColour;
         paintColour = newColour;
-        meshRenderer.material.color = newColour;
+        myRenderer.material.color = newColour;
 
         if (paintColour != oldColour)
         {
             OnColourChange?.Invoke();
         }
+    }
+
+    public void EnableSetColour()
+    {
+        enableSetColour = true;
+    }
+
+    public void DisableSetColour()
+    {
+        enableSetColour = false;
     }
 }

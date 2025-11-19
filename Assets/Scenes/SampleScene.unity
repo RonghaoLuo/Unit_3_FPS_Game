@@ -1249,6 +1249,76 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5daa6be329eb484287819fc0f4659db, type: 3}
+--- !u!1001 &267789536
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3870257676299390625, guid: 78b674259044f40379c89a058cfc87fb, type: 3}
+      propertyPath: m_Name
+      value: corridor_wildEnd
+      objectReference: {fileID: 0}
+    - target: {fileID: 6005644823684986004, guid: 78b674259044f40379c89a058cfc87fb, type: 3}
+      propertyPath: detectForAnyColour
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6626128005694696414, guid: 78b674259044f40379c89a058cfc87fb, type: 3}
+      propertyPath: enableSetColour
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092818963830054999, guid: 78b674259044f40379c89a058cfc87fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -70.91732
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092818963830054999, guid: 78b674259044f40379c89a058cfc87fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092818963830054999, guid: 78b674259044f40379c89a058cfc87fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.554866
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092818963830054999, guid: 78b674259044f40379c89a058cfc87fb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092818963830054999, guid: 78b674259044f40379c89a058cfc87fb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092818963830054999, guid: 78b674259044f40379c89a058cfc87fb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092818963830054999, guid: 78b674259044f40379c89a058cfc87fb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.49999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092818963830054999, guid: 78b674259044f40379c89a058cfc87fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092818963830054999, guid: 78b674259044f40379c89a058cfc87fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092818963830054999, guid: 78b674259044f40379c89a058cfc87fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 78b674259044f40379c89a058cfc87fb, type: 3}
+--- !u!23 &267789537 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8209280688612508893, guid: 78b674259044f40379c89a058cfc87fb, type: 3}
+  m_PrefabInstance: {fileID: 267789536}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &277095589
 GameObject:
   m_ObjectHideFlags: 0
@@ -4507,7 +4577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3809517700552958626, guid: 0e8acfc0dcf3b65499ec50f5d88485d2, type: 3}
       propertyPath: toBePaintedOnComplete.Array.data[1].renderers.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3809517700552958626, guid: 0e8acfc0dcf3b65499ec50f5d88485d2, type: 3}
       propertyPath: 'toBePaintedOnComplete.Array.data[0].renderers.Array.data[0]'
@@ -4517,6 +4587,10 @@ PrefabInstance:
       propertyPath: 'toBePaintedOnComplete.Array.data[1].renderers.Array.data[0]'
       value: 
       objectReference: {fileID: 40746500}
+    - target: {fileID: 3809517700552958626, guid: 0e8acfc0dcf3b65499ec50f5d88485d2, type: 3}
+      propertyPath: 'toBePaintedOnComplete.Array.data[1].renderers.Array.data[1]'
+      value: 
+      objectReference: {fileID: 267789537}
     - target: {fileID: 3809517700552958626, guid: 0e8acfc0dcf3b65499ec50f5d88485d2, type: 3}
       propertyPath: OnRoomComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
@@ -5873,6 +5947,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2888461977054313738, guid: 13721180d85767c408aa2eb512eeee1e, type: 3}
   m_PrefabInstance: {fileID: 2963536014884661026}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1743312188 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6005644823684986004, guid: 78b674259044f40379c89a058cfc87fb, type: 3}
+  m_PrefabInstance: {fileID: 267789536}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79a54c0c2151724996da6df64af9005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaticPaintableDetector
 --- !u!1 &1752215106
 GameObject:
   m_ObjectHideFlags: 0
@@ -6431,6 +6516,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Paintable Detector Handler 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1835196975750859236, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4893572394493341721, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.31
@@ -6477,7 +6566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5066656767547920187, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
       propertyPath: detectors.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5066656767547920187, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
       propertyPath: 'targets.Array.data[0]'
@@ -6487,6 +6576,10 @@ PrefabInstance:
       propertyPath: 'detectors.Array.data[0]'
       value: 
       objectReference: {fileID: 2058936050}
+    - target: {fileID: 5066656767547920187, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
+      propertyPath: 'detectors.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1743312188}
     - target: {fileID: 5066656767547920187, guid: 253905e54a5b07948b0a793384b9dbfb, type: 3}
       propertyPath: OnOutputTrue.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -8481,3 +8574,4 @@ SceneRoots:
   - {fileID: 554061972}
   - {fileID: 1176574111}
   - {fileID: 40746502}
+  - {fileID: 267789536}
