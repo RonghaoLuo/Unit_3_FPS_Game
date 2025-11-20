@@ -33,7 +33,7 @@ public class PlayerHUD : MonoBehaviour
         paintIcons[iconIndex].color = colour;
     }
 
-    private void Start()
+    private void Awake()
     {
         UIManager.Instance.RegisterPlayerHUD(this);
         gameObject.SetActive(false);

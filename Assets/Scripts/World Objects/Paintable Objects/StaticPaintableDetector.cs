@@ -9,9 +9,12 @@ public class StaticPaintableDetector : PaintableDetector
 
     private void Awake()
     {
-        UpdateOutput();
-
         paintable.OnColourChange += UpdateOutput;
+    }
+
+    private void Start()
+    {
+        UpdateOutput();
     }
 
     private void OnDestroy()

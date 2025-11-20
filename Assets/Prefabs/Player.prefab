@@ -392,8 +392,6 @@ MonoBehaviour:
     index: 5
   - keyCode: 55
     index: 6
-  - keyCode: 56
-    index: 7
   existPaints:
   - {r: 0, g: 0.80784315, b: 0.81960785, a: 1}
   - {r: 1, g: 0.3882353, b: 0.2784314, a: 1}
@@ -402,8 +400,7 @@ MonoBehaviour:
   - {r: 0.13333334, g: 0.14117648, b: 0.8039216, a: 1}
   - {r: 1, g: 0.64705884, b: 0, a: 1}
   - {r: 0.627451, g: 0.1254902, b: 0.9411765, a: 1}
-  - {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  paintAvailability: 0101000000000001
+  paintAvailability: 00000001000000
 --- !u!114 &1304978640704101914
 MonoBehaviour:
   m_ObjectHideFlags: 0

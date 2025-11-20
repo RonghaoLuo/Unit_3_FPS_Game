@@ -25,6 +25,7 @@ public class PoolManager : MonoBehaviour
         new Dictionary<PoolableType, SimplePool>();
 
     [SerializeField] private PoolDefinition[] definedPools;
+    [SerializeField] private PoolDefinition[] postStartPools;
 
     #region Reference Maps
     public Dictionary<GameObject, Paintball> gameObjectToPaintballMap = new();
@@ -46,12 +47,34 @@ public class PoolManager : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnInitializePostStart -= InitializePostStartPools;
+    }
+
     private void Start()
+    {
+        GameManager.Instance.OnInitializePostStart += InitializePostStartPools;
+        InitializeDefinedPools();
+    }
+
+    private void InitializeDefinedPools()
     {
         for (int i = 0; i < definedPools.Length; i++)
         {
             PoolDefinition def = definedPools[i];
 
+            GameObject poolParent = new(def.type.ToString());
+            poolParent.transform.SetParent(this.transform, false);
+            poolMap[def.type] = new SimplePool(def.prefab, poolParent.transform, def.initialSize);
+        }
+    }
+
+    private void InitializePostStartPools()
+    {
+        for (int i = 0; i < postStartPools.Length; i++)
+        {
+            PoolDefinition def = postStartPools[i];
             GameObject poolParent = new(def.type.ToString());
             poolParent.transform.SetParent(this.transform, false);
             poolMap[def.type] = new SimplePool(def.prefab, poolParent.transform, def.initialSize);

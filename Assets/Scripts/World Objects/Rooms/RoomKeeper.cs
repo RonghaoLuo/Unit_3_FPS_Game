@@ -33,6 +33,8 @@ public class RoomKeeper : MonoBehaviour
         roomIsCompleted = true;
 
         OnRoomComplete?.Invoke();
+
+        Debug.Log("Room Completed!");
     }
 
     public void StartPreySpawning()

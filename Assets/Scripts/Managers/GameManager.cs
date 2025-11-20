@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public Action OnIntroFinish;
-    public Action OnGameOver;
+    public Action OnInitializePostStart, OnGameOver;
     public Action<float> OnCountdownChange;
     public Action OnTogglePauseGame;
     public Action OnResetManagers;
@@ -95,6 +95,11 @@ public class GameManager : MonoBehaviour
         //}
 
         #endregion
+    }
+
+    public void InitializePostStart()
+    {
+        OnInitializePostStart?.Invoke();
     }
 
     public void FinishIntro()
