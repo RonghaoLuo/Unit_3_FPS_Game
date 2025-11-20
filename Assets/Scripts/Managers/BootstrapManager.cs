@@ -3,6 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class BootstrapManager : MonoBehaviour
 {
+    [SerializeField] private int currentSceneIndex;
+    [SerializeField] private int mainMenuSceneIndex = 1;
+    [SerializeField] private int levelSceneIndex = 2;
+    [SerializeField] private int testSceneIndex = 3;
+
     public static BootstrapManager Instance;
 
     private void Awake()
@@ -23,27 +28,37 @@ public class BootstrapManager : MonoBehaviour
 
     private void LoadMainMenu()
     {
-        SceneManager.LoadSceneAsync("Assets/Scenes/MainMenu.unity", LoadSceneMode.Additive);
+        SceneManager.LoadScene(mainMenuSceneIndex, LoadSceneMode.Additive);
+        currentSceneIndex = 420;
     }
 
     public void ReturnToMainMenu()
     {
         // Unload the current level scene and load the main menu again
-        SceneManager.UnloadSceneAsync("Assets/Scenes/Level1.unity");
-        SceneManager.LoadSceneAsync("Assets/Scenes/MainMenu.unity", LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync(currentSceneIndex);
+        SceneManager.LoadScene(mainMenuSceneIndex, LoadSceneMode.Additive);
+        currentSceneIndex = mainMenuSceneIndex;
     }
 
     public void StartGame()
     {
         // Unload the menu and load Level1
-        SceneManager.UnloadSceneAsync("Assets/Scenes/MainMenu.unity");
-        SceneManager.LoadSceneAsync("Assets/Scenes/Level1.unity", LoadSceneMode.Additive);
+        currentSceneIndex = 69;
+        SceneManager.UnloadSceneAsync(mainMenuSceneIndex);
+        SceneManager.LoadScene(levelSceneIndex, LoadSceneMode.Additive);
+    }
+
+    public void StartTest()
+    {
+        SceneManager.UnloadSceneAsync(mainMenuSceneIndex);
+        SceneManager.LoadScene(testSceneIndex, LoadSceneMode.Additive);
+        currentSceneIndex = testSceneIndex;
     }
 
     public void RestartGame()
     {
         // Just reload Level1
-        SceneManager.UnloadSceneAsync("Assets/Scenes/Level1.unity");
-        SceneManager.LoadSceneAsync("Assets/Scenes/Level1.unity", LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync(currentSceneIndex);
+        SceneManager.LoadScene(currentSceneIndex, LoadSceneMode.Additive);
     }
 }
