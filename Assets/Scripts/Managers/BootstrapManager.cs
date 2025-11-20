@@ -29,29 +29,29 @@ public class BootstrapManager : MonoBehaviour
     private void LoadMainMenu()
     {
         SceneManager.LoadScene(mainMenuSceneIndex, LoadSceneMode.Additive);
-        currentSceneIndex = 420;
+        currentSceneIndex = mainMenuSceneIndex;
     }
 
     public void ReturnToMainMenu()
     {
         // Unload the current level scene and load the main menu again
         SceneManager.UnloadSceneAsync(currentSceneIndex);
-        SceneManager.LoadScene(mainMenuSceneIndex, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(mainMenuSceneIndex, LoadSceneMode.Additive);
         currentSceneIndex = mainMenuSceneIndex;
     }
 
     public void StartGame()
     {
         // Unload the menu and load Level1
-        currentSceneIndex = 69;
+        currentSceneIndex = levelSceneIndex;
         SceneManager.UnloadSceneAsync(mainMenuSceneIndex);
-        SceneManager.LoadScene(levelSceneIndex, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(levelSceneIndex, LoadSceneMode.Additive);
     }
 
     public void StartTest()
     {
         SceneManager.UnloadSceneAsync(mainMenuSceneIndex);
-        SceneManager.LoadScene(testSceneIndex, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(testSceneIndex, LoadSceneMode.Additive);
         currentSceneIndex = testSceneIndex;
     }
 
@@ -59,6 +59,6 @@ public class BootstrapManager : MonoBehaviour
     {
         // Just reload Level1
         SceneManager.UnloadSceneAsync(currentSceneIndex);
-        SceneManager.LoadScene(currentSceneIndex, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(currentSceneIndex, LoadSceneMode.Additive);
     }
 }

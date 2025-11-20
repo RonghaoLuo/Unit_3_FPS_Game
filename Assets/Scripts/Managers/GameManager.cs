@@ -174,6 +174,16 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
+    public void StartGame()
+    {
+        BootstrapManager.Instance.StartGame();
+    }
+
+    public void StartTest()
+    {
+        BootstrapManager.Instance.StartTest();
+    }
+
     public void ReturnToMainMenu()
     {
         BootstrapManager.Instance.ReturnToMainMenu();
