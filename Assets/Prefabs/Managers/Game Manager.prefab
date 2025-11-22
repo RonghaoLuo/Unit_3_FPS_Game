@@ -44,7 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790b66616d720a042a7ac69d66edb58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameCountdown: 120
+  challengeCountdown: 300
   gameRunning: 0
+  countdownRunning: 0
+  debugStartGameOnStart: 0
+  levelCompleted: 0
   introDirector: {fileID: 0}
   playerInput: {fileID: 0}

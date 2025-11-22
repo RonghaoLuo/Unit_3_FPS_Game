@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8192967348150889001}
   - component: {fileID: 6427217198978196451}
   - component: {fileID: 8929197762776445861}
+  - component: {fileID: 8860018342273477325}
+  - component: {fileID: -566240924080791692}
   m_Layer: 0
   m_Name: Chocolate_Bar
   m_TagString: Untagged
@@ -111,3 +113,34 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2646909, y: 0.017760979, z: 0.19001041}
   m_Center: {x: 0.000000074505806, y: 0.0088804895, z: 0}
+--- !u!114 &8860018342273477325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7823390223604601082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c879870aac209b4381c786b2b4f6417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Paintable
+  myRenderer: {fileID: 6427217198978196451}
+  paintColour: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  enableSetColour: 1
+--- !u!114 &-566240924080791692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7823390223604601082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79a54c0c2151724996da6df64af9005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaticPaintableDetector
+  correctColour: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  output: 0
+  paintable: {fileID: 8860018342273477325}
+  detectForAnyColour: 1

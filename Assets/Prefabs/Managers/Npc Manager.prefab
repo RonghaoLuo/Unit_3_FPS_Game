@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bcf87584c832f94bae9a65ad79f4dbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NpcManager
-  preySpawnFrequency: 1
-  maxNumOfPrey: 1
+  preySpawnFrequency: 0.5
+  maxNumOfPrey: 50
   numOfPreysSpawned: 0

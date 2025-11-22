@@ -51,7 +51,7 @@ public class BootstrapManager : MonoBehaviour
     public void StartTest()
     {
         SceneManager.UnloadSceneAsync(mainMenuSceneIndex);
-        SceneManager.LoadSceneAsync(testSceneIndex, LoadSceneMode.Additive);
+        SceneManager.LoadScene(testSceneIndex, LoadSceneMode.Additive);
         currentSceneIndex = testSceneIndex;
     }
 

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1383426265480537295}
   - component: {fileID: 3361937950830728765}
   - component: {fileID: 4025595747498957577}
+  - component: {fileID: -3582082503239966138}
+  - component: {fileID: 929095916311315124}
   m_Layer: 0
   m_Name: Pancake
   m_TagString: Untagged
@@ -113,3 +115,34 @@ CapsuleCollider:
   m_Height: 0.187858
   m_Direction: 1
   m_Center: {x: 0.00079314783, y: 0.093929, z: -0.00011353567}
+--- !u!114 &-3582082503239966138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5199277216051974688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c879870aac209b4381c786b2b4f6417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Paintable
+  myRenderer: {fileID: 3361937950830728765}
+  paintColour: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  enableSetColour: 1
+--- !u!114 &929095916311315124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5199277216051974688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79a54c0c2151724996da6df64af9005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaticPaintableDetector
+  correctColour: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  output: 0
+  paintable: {fileID: -3582082503239966138}
+  detectForAnyColour: 1

@@ -37,9 +37,15 @@ public class RoomKeeper : MonoBehaviour
         Debug.Log("Room Completed!");
     }
 
-    public void StartPreySpawning()
+    public void StartChallenge()
     {
         GameManager.Instance.StartChallenge(spawnPoints);
+    }
+
+    public void ChallengeComplete()
+    {
+        GameManager.Instance.ChallengeComplete();
+        
     }
 
     public void PaintTheRoom()

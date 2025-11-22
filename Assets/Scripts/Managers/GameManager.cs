@@ -177,11 +177,13 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         BootstrapManager.Instance.StartGame();
+        InitializePostStart();
     }
 
     public void StartTest()
     {
         BootstrapManager.Instance.StartTest();
+        Invoke(nameof(InitializePostStart), 1f);
     }
 
     public void ReturnToMainMenu()

@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Paintable
   myRenderer: {fileID: 8209280688612508893}
   paintColour: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  enableSetColour: 0
+  enableSetColour: 1
 --- !u!114 &6005644823684986004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,4 +144,4 @@ MonoBehaviour:
   correctColour: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   output: 0
   paintable: {fileID: 6626128005694696414}
-  detectForAnyColour: 0
+  detectForAnyColour: 1

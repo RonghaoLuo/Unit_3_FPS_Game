@@ -11,6 +11,7 @@ public class PaintableDetectorHandler : MonoBehaviour
 
     [SerializeField] private int totalDetectors = 0;
     [SerializeField] private int totalTrues = 0;
+    [SerializeField][Range(0, 1)] private float detectionThreshold = 1f;
 
     private void Start()
     {
@@ -50,7 +51,7 @@ public class PaintableDetectorHandler : MonoBehaviour
     {
         UpdateTotalTrues(newInput);
 
-        if (totalTrues == totalDetectors)
+        if (totalTrues >= totalDetectors * detectionThreshold)
         {
             OnOutputTrue?.Invoke();
             foreach (Door target in targets)

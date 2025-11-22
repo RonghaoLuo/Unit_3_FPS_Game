@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3115713108779350689}
   - component: {fileID: 5973917814445854347}
   - component: {fileID: -5387547993273798042}
+  - component: {fileID: 467494927187119669}
+  - component: {fileID: 5049045809660493500}
   m_Layer: 0
   m_Name: Choco_Cookie
   m_TagString: Untagged
@@ -111,3 +113,34 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.160889, y: 0.027486801, z: 0.160889}
   m_Center: {x: -0.000000026077032, y: 0.013990669, z: 0.00000008940697}
+--- !u!114 &467494927187119669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8686766754367713567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79a54c0c2151724996da6df64af9005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaticPaintableDetector
+  correctColour: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  output: 0
+  paintable: {fileID: 5049045809660493500}
+  detectForAnyColour: 1
+--- !u!114 &5049045809660493500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8686766754367713567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c879870aac209b4381c786b2b4f6417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Paintable
+  myRenderer: {fileID: 5973917814445854347}
+  paintColour: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  enableSetColour: 1
