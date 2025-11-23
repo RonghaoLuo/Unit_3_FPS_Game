@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PauseMenu : MonoBehaviour
+public class UIPauseMenu : MonoBehaviour
 {
     private void Start()
     {

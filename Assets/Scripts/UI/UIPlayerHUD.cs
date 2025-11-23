@@ -3,12 +3,13 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 
-public class PlayerHUD : MonoBehaviour
+public class UIPlayerHUD : MonoBehaviour
 {
     [Header("HUD Elements")]
     [SerializeField] private TextMeshProUGUI countdownText;
     [SerializeField] private Image[] paintIcons;
     [SerializeField] private Image selectionOutline;
+    [SerializeField] private TextMeshProUGUI interactionPrompt;
 
     private TimeSpan formattedTime;
 
@@ -33,6 +34,11 @@ public class PlayerHUD : MonoBehaviour
         paintIcons[iconIndex].color = colour;
     }
 
+    private void SetInteractionPromptVisibility(bool isVisible)
+    {
+        interactionPrompt.gameObject.SetActive(isVisible);
+    }
+
     private void Awake()
     {
         UIManager.Instance.RegisterPlayerHUD(this);
@@ -40,11 +46,13 @@ public class PlayerHUD : MonoBehaviour
 
         UIManager.Instance.OnUpdateSelectionOutline += SetOutlinePosition;
         UIManager.Instance.OnUpdatePaintIcon += SetPaintIconColour;
+        UIManager.Instance.OnToggleInteractionPrompt += SetInteractionPromptVisibility;
     }
 
     private void OnDestroy()
     {
         UIManager.Instance.OnUpdateSelectionOutline -= SetOutlinePosition;
         UIManager.Instance.OnUpdatePaintIcon -= SetPaintIconColour;
+        UIManager.Instance.OnToggleInteractionPrompt -= SetInteractionPromptVisibility;
     }
 }

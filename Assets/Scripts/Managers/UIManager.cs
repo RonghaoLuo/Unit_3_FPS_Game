@@ -9,9 +9,10 @@ public class UIManager : MonoBehaviour
 
     public Action<int> OnUpdateSelectionOutline;
     public Action<int, Color> OnUpdatePaintIcon;
+    public Action<bool> OnToggleInteractionPrompt;
 
-    [SerializeField] private PlayerHUD playerHUD;
-    [SerializeField] private PauseMenu pauseMenu;
+    [SerializeField] private UIPlayerHUD playerHUD;
+    [SerializeField] private UIPauseMenu pauseMenu;
 
     private void Awake()
     {
@@ -81,13 +82,23 @@ public class UIManager : MonoBehaviour
         pauseMenu = null;
     }
 
+    public void EnableInteractionPrompt()
+    {
+        OnToggleInteractionPrompt?.Invoke(true);
+    }
+
+    public void DisableInteractionPrompt()
+    {
+        OnToggleInteractionPrompt?.Invoke(false);
+    }
+
     #region Register Methods
-    public void RegisterPlayerHUD(PlayerHUD hud)
+    public void RegisterPlayerHUD(UIPlayerHUD hud)
     {
         playerHUD = hud;
     }
 
-    public void RegisterPauseMenu(PauseMenu menu)
+    public void RegisterPauseMenu(UIPauseMenu menu)
     {
         pauseMenu = menu;
     }

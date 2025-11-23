@@ -15,6 +15,9 @@ public class Grabbable : MonoBehaviour, IInteractable
 
     public void Grab(Transform parent)
     {
+        //Debug.Log("Hide Press F");
+        UIManager.Instance.DisableInteractionPrompt();
+
         // started grabbing the cube
         cubeRigidbody.isKinematic = true;
 
@@ -38,7 +41,6 @@ public class Grabbable : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        Debug.Log("Hide Press F");
         if (isGrabbed)
         {
             Release();
@@ -53,12 +55,17 @@ public class Grabbable : MonoBehaviour, IInteractable
 
     public void OnInteractionHoverEnter()
     {
-        Debug.Log("Show Press F");
+        if (isGrabbed) return;
+
+        //Debug.Log("Show Press F");
+        UIManager.Instance.EnableInteractionPrompt();
     }
 
     public void OnInteractionHoverExit()
     {
-        Debug.Log("Hide Press F");
+        if (isGrabbed) return;
+        //Debug.Log("Hide Press F");
+        UIManager.Instance.DisableInteractionPrompt();
     }
 
     public void SetGrabPointOrigin(Transform point)
