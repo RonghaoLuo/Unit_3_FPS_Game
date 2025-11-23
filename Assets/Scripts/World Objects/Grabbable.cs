@@ -38,6 +38,7 @@ public class Grabbable : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
+        Debug.Log("Hide Press F");
         if (isGrabbed)
         {
             Release();
@@ -52,12 +53,12 @@ public class Grabbable : MonoBehaviour, IInteractable
 
     public void OnInteractionHoverEnter()
     {
-
+        Debug.Log("Show Press F");
     }
 
     public void OnInteractionHoverExit()
     {
-
+        Debug.Log("Hide Press F");
     }
 
     public void SetGrabPointOrigin(Transform point)
