@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1747247979600800555}
   - component: {fileID: 7706604252950553404}
   m_Layer: 0
-  m_Name: Paintable Cube
+  m_Name: Grabbable Paintable Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1e065720b98195047bd440470656ffca, type: 2}
+  - {fileID: 2100000, guid: 9914620d1f743a449a4dbbad5c675f37, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
