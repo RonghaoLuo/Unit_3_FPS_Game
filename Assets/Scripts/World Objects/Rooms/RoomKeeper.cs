@@ -15,7 +15,7 @@ public class RoomKeeper : MonoBehaviour
     [SerializeField] private bool roomIsCompleted = false;
     [SerializeField] private List<RenderersAndColour> toBePaintedOnComplete;
 
-    public UnityEvent OnRoomEntry, OnRoomComplete, OnRoomExit;
+    public UnityEvent OnRoomEntry, OnRoomComplete, OnRoomUndoComplete, OnRoomExit;
 
     public void EnterRoom()
     {
@@ -37,6 +37,16 @@ public class RoomKeeper : MonoBehaviour
         Debug.Log("Room Completed!");
     }
 
+    public void UndoCompletion()
+    {
+        if (!roomIsCompleted) return;
+        roomIsCompleted = false;
+
+        OnRoomUndoComplete?.Invoke();
+
+        Debug.Log("Room Completion Undone!");
+    }
+
     public void StartChallenge()
     {
         GameManager.Instance.StartChallenge(spawnPoints);
@@ -55,6 +65,17 @@ public class RoomKeeper : MonoBehaviour
             foreach(Renderer renderer in item.renderers)
             {
                 renderer.material.color = item.colour;
+            }
+        }
+    }
+
+    public void UnpaintTheRoom()
+    {
+        foreach (RenderersAndColour item in toBePaintedOnComplete)
+        {
+            foreach (Renderer renderer in item.renderers)
+            {
+                renderer.material.color = Color.gray5;
             }
         }
     }

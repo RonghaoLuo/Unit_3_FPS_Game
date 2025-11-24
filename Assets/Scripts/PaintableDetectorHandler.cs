@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class PaintableDetectorHandler : MonoBehaviour
 {
-    public UnityEvent OnOutputTrue;
+    public UnityEvent OnOutputTrue, OnOutputFalse;
 
     [SerializeField] private List<PaintableDetector> detectors = new();
     [SerializeField] private List<Door> targets = new();
@@ -61,7 +61,8 @@ public class PaintableDetectorHandler : MonoBehaviour
         }
         else
         {
-            foreach(Door target in targets)
+            OnOutputFalse?.Invoke();
+            foreach (Door target in targets)
             {
                 target.CloseDoor();
             }
