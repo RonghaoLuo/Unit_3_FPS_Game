@@ -36,7 +36,7 @@ public class Paintball : Projectile
             }
             if (defeatable != null)
             {
-                defeatable.OnHit();
+                defeatable.Hit();
             }
 
         }

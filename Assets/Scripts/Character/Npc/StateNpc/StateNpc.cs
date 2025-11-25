@@ -48,7 +48,7 @@ public class StateNpc : MonoBehaviour, IPoolable
                                                                     // && myAgent.velocity.magnitude > 5f;
     }
 
-    public void OnSpawn()
+    public virtual void OnSpawn()
     {
         gameObject.SetActive(true);
 

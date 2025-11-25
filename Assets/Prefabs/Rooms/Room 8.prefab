@@ -380,6 +380,82 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8091701393433666111, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
+      propertyPath: spawnPoints.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091701393433666111, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
+      propertyPath: 'spawnPoints.Array.data[0]'
+      value: 
+      objectReference: {fileID: 115969888670111329}
+    - target: {fileID: 8091701393433666111, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
+      propertyPath: 'spawnPoints.Array.data[1]'
+      value: 
+      objectReference: {fileID: 5668494654849114647}
+    - target: {fileID: 8091701393433666111, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
+      propertyPath: 'spawnPoints.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8878426975764938332}
+    - target: {fileID: 8091701393433666111, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
+      propertyPath: 'spawnPoints.Array.data[3]'
+      value: 
+      objectReference: {fileID: 4163895021415342702}
+    - target: {fileID: 8091701393433666111, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
+      propertyPath: OnRoomEntry.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091701393433666111, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
+      propertyPath: OnRoomComplete.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091701393433666111, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
+      propertyPath: OnRoomEntry.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091701393433666111, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
+      propertyPath: OnRoomEntry.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8751594305768856969}
+    - target: {fileID: 8091701393433666111, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
+      propertyPath: OnRoomComplete.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091701393433666111, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
+      propertyPath: OnRoomComplete.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 8751594305768856969}
+    - target: {fileID: 8091701393433666111, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
+      propertyPath: OnRoomEntry.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091701393433666111, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
+      propertyPath: OnRoomEntry.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartPreySpawning
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091701393433666111, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
+      propertyPath: OnRoomComplete.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091701393433666111, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
+      propertyPath: OnRoomComplete.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: StopPreySpawning
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091701393433666111, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
+      propertyPath: OnRoomEntry.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RoomKeeper, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091701393433666111, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
+      propertyPath: OnRoomComplete.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: RoomKeeper, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091701393433666111, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
+      propertyPath: OnRoomEntry.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091701393433666111, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
+      propertyPath: OnRoomComplete.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1461950247043436354, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
@@ -408,3 +484,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3373197045103078831, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
   m_PrefabInstance: {fileID: 664447162511966134}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8751594305768856969 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8091701393433666111, guid: aa5509bbd5fb5494b97a908ebabfb7b6, type: 3}
+  m_PrefabInstance: {fileID: 664447162511966134}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0629612620ea464c8c3304406067ed0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomKeeper

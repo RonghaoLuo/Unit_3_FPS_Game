@@ -3,7 +3,7 @@ using UnityEngine;
 
 public interface IDefeatable
 {
-    public void OnHit();
+    public void Hit();
 }
 
 //public class Test: MonoBehaviour

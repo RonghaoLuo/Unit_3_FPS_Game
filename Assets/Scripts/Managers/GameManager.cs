@@ -211,6 +211,9 @@ public class GameManager : MonoBehaviour
         OnResetManagers?.Invoke();
 
         challengeCountdown = gameCountdownInitialNumber;
+        countdownRunning = false;
+        levelCompleted = false;
+
         playerInput = null;
         introDirector = null;
     }

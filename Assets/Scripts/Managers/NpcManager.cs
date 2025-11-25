@@ -33,12 +33,14 @@ public class NpcManager : MonoBehaviour
     {
         GameManager.Instance.OnChallengeBegin += StartChallengeSpawning;
         GameManager.Instance.OnChallengeEnd += StopChallengeSpawning;
+        GameManager.Instance.OnResetManagers += ResetManager;
     }
 
     private void OnDestroy()
     {
         GameManager.Instance.OnChallengeBegin -= StartChallengeSpawning;
         GameManager.Instance.OnChallengeEnd -= StopChallengeSpawning;
+        GameManager.Instance.OnResetManagers -= ResetManager;
     }
 
     private void StartChallengeSpawning(RoomKeeper room, Transform[] spawnPoints,
@@ -50,6 +52,26 @@ public class NpcManager : MonoBehaviour
     private void StopChallengeSpawning(RoomKeeper room)
     {
         StopPreySpawning(room);
+    }
+
+    private void ResetManager()
+    {
+        totalNumOfPreysSpawned = 0;
+
+        foreach (var kvp in roomToSpawnCoroutineMap)
+        {
+            StopCoroutine(kvp.Value);
+        }
+        roomToSpawnCoroutineMap.Clear();
+
+        foreach (var kvp in roomToPreysMap)
+        {
+            foreach (Prey prey in kvp.Value)
+            {
+                PoolManager.Instance.ReturnToPool(prey);
+            }
+        }
+        roomToPreysMap.Clear();
     }
 
     public StateNpc SpawnNpc(RoomKeeper room, Vector3 position)

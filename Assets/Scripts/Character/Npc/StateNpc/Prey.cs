@@ -4,16 +4,17 @@ public class Prey : WanderingNpc, IDefeatable
 {
     [SerializeField][Range(0, 1)] private float itemDropChance = 0.5f;
 
-    public void OnHit()
+    public void Hit()
     {
         //Debug.Log("Defeatable Hit");
-        OnDeath();
+        Defeat();
     }
 
-    private void OnDeath()
+    private void Defeat()
     {
         //Debug.Log("Defeatable Died");
         NpcManager.Instance.DespawnNpc(this);
+
         GenerateDeathEffect();
         DropItem();
     }

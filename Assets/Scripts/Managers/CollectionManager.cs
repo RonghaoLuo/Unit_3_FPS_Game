@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 
 public class CollectionManager : MonoBehaviour
@@ -12,8 +14,10 @@ public class CollectionManager : MonoBehaviour
     [SerializeField] private int NumOfPowerUpsPresent;
     [SerializeField] private int maxNumOfPowerUps = 3;
 
-    [SerializeField] private PaintInventory playerPaintInventory;
     [SerializeField] private PowerUp powerUpPrefab;
+
+    private PaintInventory playerPaintInventory;
+    private HashSet<PowerUp> spawnedPowerUps = new HashSet<PowerUp>();
 
     private void Awake()
     {
@@ -42,12 +46,19 @@ public class CollectionManager : MonoBehaviour
     private void ResetManager()
     {
         playerPaintInventory = null;
+        NumOfPowerUpsPresent = 0;
+        foreach (PowerUp powerUp in spawnedPowerUps)
+        {
+            Destroy(powerUp.gameObject);
+        }
+        spawnedPowerUps.Clear();
     }
 
     private void SpawnPowerUp(Vector3 position)
     {
-        Instantiate(powerUpPrefab, position, Quaternion.identity);
+        PowerUp powerUp = Instantiate(powerUpPrefab, position, Quaternion.identity);
 
+        spawnedPowerUps.Add(powerUp);
         NumOfPowerUpsPresent++;
     }
 
@@ -65,7 +76,10 @@ public class CollectionManager : MonoBehaviour
     public void DespawnPowerUp(PowerUp powerUp)
     {
         //Debug.Log("Despawning Power Up");
+        spawnedPowerUps.Remove(powerUp);
+
         Destroy(powerUp.gameObject);
+
         NumOfPowerUpsPresent--;
     }
 
