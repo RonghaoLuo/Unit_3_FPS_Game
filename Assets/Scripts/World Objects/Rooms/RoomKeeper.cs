@@ -11,7 +11,16 @@ public class RoomKeeper : MonoBehaviour
         public Color colour;
     }
 
+    [Header("Challenge Settings")]
+    [SerializeField] private int challengeMaxNumOfPreys = 50;
+    [SerializeField] private float challengeSpawnInterval = 0.5f;
+
+    [Header("Spawning Settings")]
     [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private int maxNum = 5;
+    [SerializeField] private float spawnInterval = 1f;
+
+    [Space(10)]
     [SerializeField] private bool roomIsCompleted = false;
     [SerializeField] private List<RenderersAndColour> toBePaintedOnComplete;
 
@@ -49,13 +58,24 @@ public class RoomKeeper : MonoBehaviour
 
     public void StartChallenge()
     {
-        GameManager.Instance.StartChallenge(spawnPoints);
+        GameManager.Instance.StartChallenge(this, spawnPoints, challengeMaxNumOfPreys, 
+            challengeSpawnInterval);
     }
 
     public void ChallengeComplete()
     {
         GameManager.Instance.ChallengeComplete();
         
+    }
+
+    public void StartPreySpawning()
+    {
+        NpcManager.Instance.StartPreySpawning(this, spawnPoints, maxNum, spawnInterval);
+    }
+
+    public void StopPreySpawning()
+    {
+        NpcManager.Instance.StopPreySpawning(this);
     }
 
     public void PaintTheRoom()

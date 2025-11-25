@@ -14,10 +14,13 @@ public class GameManager : MonoBehaviour
     public Action<float> OnCountdownChange;
     public Action OnTogglePauseGame;
     public Action OnResetManagers;
-    public Action<Transform[]> OnPreySpawningBegin;
-    public Action OnPreySpawningEnd;
+    public Action<RoomKeeper, Transform[], int, float> OnChallengeBegin;
+    public Action<RoomKeeper> OnChallengeEnd;
 
-    [SerializeField] private float challengeCountdown;
+    [Header("Challenge Settings")]
+    [SerializeField] private float challengeCountdown = 120f;
+    
+    [Space(10)]
     [SerializeField] private bool gameRunning;
     [SerializeField] private bool countdownRunning;
     [SerializeField] private bool debugStartGameOnStart = false;
@@ -31,6 +34,7 @@ public class GameManager : MonoBehaviour
     }
 
     private float gameCountdownInitialNumber;
+    private RoomKeeper roomOfChallenge;
 
     public bool IsGameRunning
     {
@@ -120,18 +124,20 @@ public class GameManager : MonoBehaviour
         OnTogglePauseGame?.Invoke();
     }
 
-    public void StartChallenge(Transform[] spawnPoints)
+    public void StartChallenge(RoomKeeper room, Transform[] spawnPoints, int maxNumOfPreys, 
+        float spawnInterval)
     {
         // do some effects
         Debug.Log("Starting Challenge...");
 
-        StartPreySpawning(spawnPoints);
+        roomOfChallenge = room;
+        OnChallengeBegin?.Invoke(room, spawnPoints, maxNumOfPreys, spawnInterval);
         countdownRunning = true;
     }
 
-    public void StopChallenge()
+    public void StopChallenge(RoomKeeper room)
     {
-        StopPreySpawning();
+        OnChallengeEnd?.Invoke(room);
         countdownRunning = false;
     }
 
@@ -140,7 +146,7 @@ public class GameManager : MonoBehaviour
         // To prevent duplicate calls
         if (levelCompleted) return;
 
-        StopChallenge();
+        StopChallenge(roomOfChallenge);
         levelCompleted = true;
         // do some effect
         // win cutscene
@@ -154,7 +160,7 @@ public class GameManager : MonoBehaviour
     {
         if (levelCompleted) return;
 
-        StopChallenge();
+        StopChallenge(roomOfChallenge);
         levelCompleted = true;
         // do some effect
         // challenge lost cutscene
@@ -207,16 +213,6 @@ public class GameManager : MonoBehaviour
         challengeCountdown = gameCountdownInitialNumber;
         playerInput = null;
         introDirector = null;
-    }
-
-    private void StartPreySpawning(Transform[] spawnPoints)
-    {
-        OnPreySpawningBegin?.Invoke(spawnPoints);
-    }
-
-    private void StopPreySpawning()
-    {
-        OnPreySpawningEnd?.Invoke();
     }
 
     #region Register

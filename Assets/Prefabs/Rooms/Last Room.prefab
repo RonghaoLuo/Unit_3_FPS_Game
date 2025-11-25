@@ -991,7 +991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2690254135944293883, guid: e3c9a3987a7433144bc1d28c17bda0c7, type: 3}
       propertyPath: detectionThreshold
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2690254135944293883, guid: e3c9a3987a7433144bc1d28c17bda0c7, type: 3}
       propertyPath: detectors.Array.size

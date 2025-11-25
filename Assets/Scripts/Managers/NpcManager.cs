@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class NpcManager : MonoBehaviour
 {
-    [SerializeField] float preySpawnFrequency = 1.0f;
-    [SerializeField] int maxNumOfPrey = 1;
-    [SerializeField] int numOfPreysSpawned;
+    //[SerializeField] float preySpawnFrequency = 1.0f;
+    //[SerializeField] int maxNumOfPrey = 1;
+    [SerializeField] int totalNumOfPreysSpawned;
 
     private Dictionary<GameObject, StateNpc> gameObjectToNpcMap = new();
-    private Coroutine runningSpawnCoroutine;
+    private Dictionary<RoomKeeper, Coroutine> roomToSpawnCoroutineMap = new();
+    private Dictionary<RoomKeeper, HashSet<Prey>> roomToPreysMap = new();
+    //private Coroutine runningSpawnCoroutine;
 
     public static NpcManager Instance { get; private set; }
 
@@ -29,44 +31,60 @@ public class NpcManager : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.OnPreySpawningBegin += StartPreySpawning;
-        GameManager.Instance.OnPreySpawningEnd += StopPreySpawning;
+        GameManager.Instance.OnChallengeBegin += StartChallengeSpawning;
+        GameManager.Instance.OnChallengeEnd += StopChallengeSpawning;
     }
 
     private void OnDestroy()
     {
-        GameManager.Instance.OnPreySpawningBegin -= StartPreySpawning;
-        GameManager.Instance.OnPreySpawningEnd -= StopPreySpawning;
+        GameManager.Instance.OnChallengeBegin -= StartChallengeSpawning;
+        GameManager.Instance.OnChallengeEnd -= StopChallengeSpawning;
     }
 
-    public void SpawnNpc(Vector3 position)
+    private void StartChallengeSpawning(RoomKeeper room, Transform[] spawnPoints,
+        int maxNumOfPreys, float spawnInterval)
     {
-        numOfPreysSpawned++;
+        StartPreySpawning(room, spawnPoints, maxNumOfPreys, spawnInterval);
+    }
+
+    private void StopChallengeSpawning(RoomKeeper room)
+    {
+        StopPreySpawning(room);
+    }
+
+    public StateNpc SpawnNpc(RoomKeeper room, Vector3 position)
+    {
+        totalNumOfPreysSpawned++;
         GameObject go = PoolManager.Instance.Spawn(PoolableType.Prey);
 
         if (!gameObjectToNpcMap.TryGetValue(go, out StateNpc npc))
         {
-            return;
+            Debug.LogError("[NpcManager] Spawned NPC not registered!");
+            return null;
         }
 
         npc.SetPosition(position);
+        npc.SetCurrentRoom(room);
+        return npc;
     }
 
-    public void SpawnNpcRandomlyOnSpawnPoints(Transform[] spawnPoints)
+    public StateNpc SpawnNpcRandomlyOnSpawnPoints(RoomKeeper room, Transform[] spawnPoints)
     {
-        SpawnNpc(spawnPoints[ Random.Range( 0, spawnPoints.Length - 1 ) ].position);
+        return SpawnNpc(room, spawnPoints[ Random.Range( 0, spawnPoints.Length - 1 ) ].position);
     }
 
     public void DespawnNpc(StateNpc npc)
     {
-        numOfPreysSpawned--;
+        totalNumOfPreysSpawned--;
         PoolManager.Instance.ReturnToPool(npc);
+        roomToPreysMap[npc.GetCurrentRoom()].Remove(npc as Prey);
     }
 
     public void DespawnNpc(IPoolable poolable)
     {
-        numOfPreysSpawned--;
+        totalNumOfPreysSpawned--;
         PoolManager.Instance.ReturnToPool(poolable);
+        roomToPreysMap[(poolable as StateNpc).GetCurrentRoom()].Remove(poolable as Prey);
     }
 
     public void RegisterNpc(GameObject go, StateNpc npc)
@@ -75,25 +93,56 @@ public class NpcManager : MonoBehaviour
     }
 
     #region Coroutines
-    private void StartPreySpawning(Transform[] spawnPoints)
+    public void StartPreySpawning(RoomKeeper room, Transform[] spawnPoints, 
+        int maxNumOfPreys, float spawnInterval)
     {
-        runningSpawnCoroutine = StartCoroutine(PreySpawningCoroutine(spawnPoints));
+        if (roomToPreysMap.ContainsKey(room))
+        {
+            Debug.LogWarning("[NpcManager] duplicate room for prey count");
+            roomToPreysMap[room].Clear();
+            return;
+        }
+        roomToPreysMap.Add(room, new());
+
+        if (roomToSpawnCoroutineMap.ContainsKey(room))
+        {
+            Debug.LogWarning("[NpcManager] duplicate room for prey spawning");
+            roomToSpawnCoroutineMap[room] = StartCoroutine(PreySpawningCoroutine(
+                room, spawnPoints, maxNumOfPreys, spawnInterval));
+            return;
+        }
+        roomToSpawnCoroutineMap.Add(room, StartCoroutine(PreySpawningCoroutine(
+            room, spawnPoints, maxNumOfPreys, spawnInterval)));
     }
 
-    private void StopPreySpawning()
+    public void StopPreySpawning(RoomKeeper room)
     {
-        StopCoroutine(runningSpawnCoroutine);
+        if (!roomToSpawnCoroutineMap.TryGetValue(room, out Coroutine spawnCoroutine))
+        {
+            return;
+        }
+
+        StopCoroutine(spawnCoroutine);
     }
 
-    IEnumerator PreySpawningCoroutine(Transform[] spawnPoints)
+    IEnumerator PreySpawningCoroutine(RoomKeeper room, Transform[] spawnPoints, 
+        int maxNumOfPreys, float spawnInterval)
     {
-        WaitForSeconds wait = new WaitForSeconds(preySpawnFrequency);
+        WaitForSeconds wait = new WaitForSeconds(spawnInterval);
 
         while (true)
         {
-            if (numOfPreysSpawned < maxNumOfPrey)
+            if (roomToPreysMap[room].Count < maxNumOfPreys)
             {
-                SpawnNpcRandomlyOnSpawnPoints(spawnPoints);
+                Prey prey = SpawnNpcRandomlyOnSpawnPoints(room, spawnPoints) as Prey;
+                if (prey == null)
+                {
+                    Debug.LogError("[NpcManager] Failed to spawn Prey");
+                    yield return wait;
+                    continue;
+                }
+
+                roomToPreysMap[room].Add(prey);
             }
 
             // Always wait — even if you didn't spawn

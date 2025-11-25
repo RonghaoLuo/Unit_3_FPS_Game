@@ -9,7 +9,8 @@ public class StateNpc : MonoBehaviour, IPoolable
     [SerializeField] protected PoolableType type;
 
     protected NpcState currentState;
-    
+    protected RoomKeeper currentRoom;
+
     public PoolableType Type => type;
 
     public GameObject GameObject => gameObject;
@@ -69,5 +70,15 @@ public class StateNpc : MonoBehaviour, IPoolable
     {
         //Debug.Log("tries to initialize a state npc");
         NpcManager.Instance.RegisterNpc(gameObject, this);
+    }
+
+    public void SetCurrentRoom(RoomKeeper room)
+    {
+        currentRoom = room;
+    }
+
+    public RoomKeeper GetCurrentRoom()
+    {
+        return currentRoom;
     }
 }

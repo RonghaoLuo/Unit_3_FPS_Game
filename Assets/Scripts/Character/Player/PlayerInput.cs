@@ -102,10 +102,10 @@ public class PlayerInput : MonoBehaviour
         #endregion
 
         #region Testing
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            NpcManager.Instance.SpawnNpc(transform.position);
-        }
+        //if (Input.GetKeyDown(KeyCode.O))
+        //{
+        //    NpcManager.Instance.SpawnNpc(transform.position);
+        //}
 
         if (Input.GetKeyDown(KeyCode.B))
         {
