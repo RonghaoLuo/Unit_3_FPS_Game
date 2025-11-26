@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public Action<int> OnUpdateSelectionOutline;
     public Action<int, Color> OnUpdatePaintIcon;
     public Action<bool> OnToggleInteractionPrompt;
+    public Action<float> OnPowerUpCountdown;
 
     [SerializeField] private UIPlayerHUD playerHUD;
     [SerializeField] private UIPauseMenu pauseMenu;
@@ -90,6 +91,11 @@ public class UIManager : MonoBehaviour
     public void DisableInteractionPrompt()
     {
         OnToggleInteractionPrompt?.Invoke(false);
+    }
+
+    public void StartPowerUpCountdown(float duration)
+    {
+        OnPowerUpCountdown?.Invoke(duration);
     }
 
     #region Register Methods

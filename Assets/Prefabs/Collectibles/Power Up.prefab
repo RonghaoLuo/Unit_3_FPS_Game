@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3c7fd8a7757fd64d859cb0f4e196c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerUp
+  jumpForceMultiplier: 1.8
   speedMultiplier: 2
   sizeMultiplier: 3
   effectRadiusMultiplier: 3

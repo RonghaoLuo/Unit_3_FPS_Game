@@ -4,6 +4,8 @@ public class PlayerShootPaintball : MouseClickStrategy
 {
     [SerializeField] private Transform weaponTip;
     [SerializeField] private PaintInventory inventory;
+    [SerializeField] private Rigidbody playerRigidbody;
+    [SerializeField] private CharacterController playerController;
     [SerializeField] private PoolableType toShoot;
 
     [Header("Base Stats")]
@@ -68,7 +70,7 @@ public class PlayerShootPaintball : MouseClickStrategy
     public void Shoot()
     {
         GameObject go = PoolManager.Instance.Spawn(toShoot, weaponTip.transform, 
-            CurrentProjectileSpeed);
+            CurrentProjectileSpeed + Vector3.Dot(playerController.velocity, transform.forward));
         Paintball paintball = PoolManager.Instance.gameObjectToPaintballMap[go];
         
         if (shootWithRandomColour)

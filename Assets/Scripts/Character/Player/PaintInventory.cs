@@ -25,6 +25,8 @@ public class PaintInventory : MonoBehaviour
     private Dictionary<KeyCode, int> actualKeyCodeToIndexMap;
     private Dictionary<Color, int> paintToIndexMap;
     private int numOfExistPaints;
+    private int currentPaintIndex;
+    private int nextPaintIndex;
 
     private void Awake()
     {
@@ -79,6 +81,29 @@ public class PaintInventory : MonoBehaviour
         if (!existPaints.Contains(colour)) return;
         SetPaintAvailability(colour, true);
         UIManager.Instance.OnUpdatePaintIcon?.Invoke(paintToIndexMap[colour], colour);
+    }
+
+    public void CycleSelectedPaint(float scrollInput)
+    {
+        currentPaintIndex = paintToIndexMap[SelectedPaint];
+        nextPaintIndex = currentPaintIndex;
+        if (scrollInput > 0f)
+        {
+            // Scroll up
+            do
+            {
+                nextPaintIndex = (nextPaintIndex + 1) % existPaints.Count;
+            } while (!paintAvailability[nextPaintIndex] && nextPaintIndex != currentPaintIndex);
+        }
+        else if (scrollInput < 0f)
+        {
+            // Scroll down
+            do
+            {
+                nextPaintIndex = (nextPaintIndex - 1 + existPaints.Count) % existPaints.Count;
+            } while (!paintAvailability[nextPaintIndex] && nextPaintIndex != currentPaintIndex);
+        }
+        TrySelectPaint(nextPaintIndex);
     }
 
     [System.Serializable]

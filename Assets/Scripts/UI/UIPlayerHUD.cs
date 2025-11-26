@@ -10,6 +10,7 @@ public class UIPlayerHUD : MonoBehaviour
     [SerializeField] private Image[] paintIcons;
     [SerializeField] private Image selectionOutline;
     [SerializeField] private TextMeshProUGUI interactionPrompt;
+    [SerializeField] private UIDurationDown powerUpDurationDown;
 
     private TimeSpan formattedTime;
 
@@ -39,6 +40,11 @@ public class UIPlayerHUD : MonoBehaviour
         interactionPrompt.gameObject.SetActive(isVisible);
     }
 
+    private void StartPowerUpCountdown(float duration)
+    {
+        powerUpDurationDown.StartCountdown(duration);
+    }
+
     private void Awake()
     {
         UIManager.Instance.RegisterPlayerHUD(this);
@@ -47,6 +53,7 @@ public class UIPlayerHUD : MonoBehaviour
         UIManager.Instance.OnUpdateSelectionOutline += SetOutlinePosition;
         UIManager.Instance.OnUpdatePaintIcon += SetPaintIconColour;
         UIManager.Instance.OnToggleInteractionPrompt += SetInteractionPromptVisibility;
+        UIManager.Instance.OnPowerUpCountdown += StartPowerUpCountdown;
     }
 
     private void OnDestroy()
@@ -54,5 +61,6 @@ public class UIPlayerHUD : MonoBehaviour
         UIManager.Instance.OnUpdateSelectionOutline -= SetOutlinePosition;
         UIManager.Instance.OnUpdatePaintIcon -= SetPaintIconColour;
         UIManager.Instance.OnToggleInteractionPrompt -= SetInteractionPromptVisibility;
+        UIManager.Instance.OnPowerUpCountdown -= StartPowerUpCountdown;
     }
 }

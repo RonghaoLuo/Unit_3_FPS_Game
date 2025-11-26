@@ -16,6 +16,8 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private CommandGiver commandGiver;
     [SerializeField] private PaintInventory paintInventory;
 
+    private float scrollInput;
+
     #region Testing
     [Header("Test Multipliers")]
     [SerializeField] private float speed;
@@ -96,6 +98,12 @@ public class PlayerInput : MonoBehaviour
                 {
                     paintInventory.TrySelectPaintWithKeyCode(KeyCode.Alpha0 + i);
                 }
+            }
+
+            scrollInput = Input.GetAxis("Mouse ScrollWheel");
+            if (scrollInput != 0f)
+            {
+                paintInventory.CycleSelectedPaint(scrollInput);
             }
         }
 

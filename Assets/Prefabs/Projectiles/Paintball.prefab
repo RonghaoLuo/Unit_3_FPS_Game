@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Paintball
   rb: {fileID: -2421762703670965302}
-  maxLifeTime: 2
+  maxLifeTime: 5
   timeOfSpawn: 0
   type: 1
   paintColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

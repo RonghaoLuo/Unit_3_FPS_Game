@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour, ICollectible
 {
+    [SerializeField] private float jumpForceMultiplier = 3f;
     [SerializeField] private float speedMultiplier = 2f;
     [SerializeField] private float sizeMultiplier = 3f;
     [SerializeField] private float effectRadiusMultiplier = 3f;
@@ -12,7 +13,7 @@ public class PowerUp : MonoBehaviour, ICollectible
     public void CollectTo(PlayerCollect playerCollect)
     {
         //Debug.Log("Getting Collected");
-        playerCollect.StartPowerUP(speedMultiplier, sizeMultiplier, effectRadiusMultiplier, 
+        playerCollect.StartPowerUP(jumpForceMultiplier, speedMultiplier, sizeMultiplier, effectRadiusMultiplier, 
             cooldownMultiplier, duration, shootRainbow);
         CollectionManager.Instance.DespawnPowerUp(this);
     }

@@ -326,8 +326,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   currentMotion: {x: 0, y: 0, z: 0}
-  gravity: {x: 0, y: -5, z: 0}
-  jumpForce: {x: 0, y: 5, z: 0}
+  gravity: {x: 0, y: -50, z: 0}
+  baseJumpForce: {x: 0, y: 20, z: 0}
+  jumpForceMultiplier: 1
 --- !u!114 &1136045410094225472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,6 +343,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponTip: {fileID: 5047324392374065646}
   inventory: {fileID: 1198976141722156847}
+  playerRigidbody: {fileID: 4877566646519478827}
+  playerController: {fileID: 3870561594279952278}
   toShoot: 1
   baseProjectileSpeed: 15
   baseShootCooldown: 0.5
@@ -400,7 +403,7 @@ MonoBehaviour:
   - {r: 0.13333334, g: 0.14117648, b: 0.8039216, a: 1}
   - {r: 1, g: 0.64705884, b: 0, a: 1}
   - {r: 0.627451, g: 0.1254902, b: 0.9411765, a: 1}
-  paintAvailability: 00000001000000
+  paintAvailability: 01000000000000
 --- !u!114 &1304978640704101914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,6 +417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCollect
   shoot: {fileID: 1136045410094225472}
+  jump: {fileID: 3479712109852942294}
 --- !u!1 &6168268049458722360
 GameObject:
   m_ObjectHideFlags: 0
