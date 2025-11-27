@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         GameManager.Instance.OnCountdownChange += UpdateCountdown;
-        GameManager.Instance.OnIntroFinish += HandleGameStart;
+        GameManager.Instance.OnIntroFinish += HandleIntroFinish;
         GameManager.Instance.OnTogglePauseGame += TogglePauseMenu;
         GameManager.Instance.OnResetManagers += ResetManager;
         
@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
     private void OnDestroy()
     {
         GameManager.Instance.OnCountdownChange -= UpdateCountdown;
-        GameManager.Instance.OnIntroFinish -= HandleGameStart;
+        GameManager.Instance.OnIntroFinish -= HandleIntroFinish;
         GameManager.Instance.OnTogglePauseGame -= TogglePauseMenu;
         GameManager.Instance.OnResetManagers -= ResetManager;
     }
@@ -56,7 +56,7 @@ public class UIManager : MonoBehaviour
         playerHUD.SetCountdown(timesLeft);
     }
 
-    private void HandleGameStart()
+    private void HandleIntroFinish()
     {
         if (playerHUD == null) return;
 
