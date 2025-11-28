@@ -4207,6 +4207,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3373197045103078831}
     m_Modifications:
+    - target: {fileID: 626670231283380989, guid: 57149f96291e5fd4b84d49e3ef80f30e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.79
+      objectReference: {fileID: 0}
     - target: {fileID: 3849568591302878658, guid: 57149f96291e5fd4b84d49e3ef80f30e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.8428307
@@ -4246,6 +4250,12 @@ PrefabInstance:
     - target: {fileID: 3849568591302878658, guid: 57149f96291e5fd4b84d49e3ef80f30e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7254708934711823600, guid: 57149f96291e5fd4b84d49e3ef80f30e, type: 3}
+      propertyPath: m_text
+      value: 'Try Power Up!
+
+        Enhances Shooting and Jumping'
       objectReference: {fileID: 0}
     - target: {fileID: 7393325485094407146, guid: 57149f96291e5fd4b84d49e3ef80f30e, type: 3}
       propertyPath: m_Name

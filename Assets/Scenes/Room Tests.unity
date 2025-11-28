@@ -1141,6 +1141,10 @@ PrefabInstance:
       propertyPath: detectionThreshold
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 1798812718000577556, guid: 35380011b5b1d9f488e67b6af20e00fd, type: 3}
+      propertyPath: detectionThreshold
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3485578130681466618, guid: 35380011b5b1d9f488e67b6af20e00fd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -6,18 +6,19 @@ using UnityEngine.UI;
 public class UIPlayerHUD : MonoBehaviour
 {
     [Header("HUD Elements")]
-    [SerializeField] private TextMeshProUGUI countdownText;
+    [SerializeField] private TextMeshProUGUI TopBarText;
     [SerializeField] private Image[] paintIcons;
     [SerializeField] private Image selectionOutline;
     [SerializeField] private TextMeshProUGUI interactionPrompt;
     [SerializeField] private UIDurationDown powerUpDurationDown;
+    [SerializeField] private TextMeshProUGUI HotbarText;
 
     private TimeSpan formattedTime;
 
     public void SetCountdown(float timesLeft)
     {
         formattedTime = new TimeSpan(0, 0, (int)timesLeft);
-        countdownText.text = formattedTime.Minutes + ":" + formattedTime.Seconds;
+        TopBarText.text = formattedTime.Minutes + ":" + formattedTime.Seconds;
     }
 
     private void SetOutlinePosition(Transform transform)
@@ -45,6 +46,11 @@ public class UIPlayerHUD : MonoBehaviour
         powerUpDurationDown.StartCountdown(duration);
     }
 
+    private void SetHotbarText(string text)
+    {
+        HotbarText.text = text;
+    }
+
     private void Awake()
     {
         UIManager.Instance.RegisterPlayerHUD(this);
@@ -54,6 +60,7 @@ public class UIPlayerHUD : MonoBehaviour
         UIManager.Instance.OnUpdatePaintIcon += SetPaintIconColour;
         UIManager.Instance.OnToggleInteractionPrompt += SetInteractionPromptVisibility;
         UIManager.Instance.OnPowerUpCountdown += StartPowerUpCountdown;
+        UIManager.Instance.OnUpdateHotbarText += SetHotbarText;
     }
 
     private void OnDestroy()
@@ -62,5 +69,6 @@ public class UIPlayerHUD : MonoBehaviour
         UIManager.Instance.OnUpdatePaintIcon -= SetPaintIconColour;
         UIManager.Instance.OnToggleInteractionPrompt -= SetInteractionPromptVisibility;
         UIManager.Instance.OnPowerUpCountdown -= StartPowerUpCountdown;
+        UIManager.Instance.OnUpdateHotbarText -= SetHotbarText;
     }
 }

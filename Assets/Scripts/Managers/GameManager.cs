@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Playables;
-using UnityEngine.Timeline;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +13,7 @@ public class GameManager : MonoBehaviour
     public Action OnResetManagers;
     public Action<RoomKeeper, Transform[], int, float> OnChallengeBegin;
     public Action<RoomKeeper> OnChallengeEnd;
+    public Action OnChallengeComplete, OnChallengeFail;
 
     [Header("Challenge Settings")]
     [SerializeField] private float challengeCountdown = 120f;
@@ -152,8 +150,7 @@ public class GameManager : MonoBehaviour
         // win cutscene
         //win screen
         Debug.Log("You Won");
-
-        GameOver();
+        OnChallengeComplete?.Invoke();
     }
 
     public void ChallengeFail()
@@ -166,18 +163,7 @@ public class GameManager : MonoBehaviour
         // challenge lost cutscene
         // challenge lost screen
         Debug.Log("You Lost");
-
-        GameOver();
-    }
-
-    private void GameOver()
-    {
-        gameRunning = false;
-        countdownRunning = false;
-        OnGameOver?.Invoke();
-
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        OnChallengeFail?.Invoke();
     }
 
     public void StartGame()

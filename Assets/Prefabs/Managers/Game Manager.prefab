@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790b66616d720a042a7ac69d66edb58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  challengeCountdown: 300
+  challengeCountdown: 180
   gameRunning: 0
   countdownRunning: 0
   debugStartGameOnStart: 0

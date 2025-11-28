@@ -1,7 +1,6 @@
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,6 +10,7 @@ public class UIManager : MonoBehaviour
     public Action<int, Color> OnUpdatePaintIcon;
     public Action<bool> OnToggleInteractionPrompt;
     public Action<float> OnPowerUpCountdown;
+    public Action<string> OnUpdateHotbarText;
 
     [SerializeField] private UIPlayerHUD playerHUD;
     [SerializeField] private UIPauseMenu pauseMenu;
@@ -35,7 +35,8 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.OnIntroFinish += HandleIntroFinish;
         GameManager.Instance.OnTogglePauseGame += TogglePauseMenu;
         GameManager.Instance.OnResetManagers += ResetManager;
-        
+        GameManager.Instance.OnChallengeComplete += HandleChallengeComplete;
+        GameManager.Instance.OnChallengeFail += HandleChallengeFail;
     }
 
     private void OnDestroy()
@@ -44,6 +45,8 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.OnIntroFinish -= HandleIntroFinish;
         GameManager.Instance.OnTogglePauseGame -= TogglePauseMenu;
         GameManager.Instance.OnResetManagers -= ResetManager;
+        GameManager.Instance.OnChallengeComplete -= HandleChallengeComplete;
+        GameManager.Instance.OnChallengeFail -= HandleChallengeFail;
     }
 
     private void UpdateCountdown(float timesLeft)
@@ -81,6 +84,16 @@ public class UIManager : MonoBehaviour
     {
         playerHUD = null;
         pauseMenu = null;
+    }
+
+    private void HandleChallengeComplete()
+    {
+        OnUpdateHotbarText?.Invoke("Challenge Complete!\nPress Tab for Menu");
+    }
+
+    private void HandleChallengeFail()
+    {
+        OnUpdateHotbarText?.Invoke("Challenge Failed!\nPress Tab for Menu");
     }
 
     public void EnableInteractionPrompt()

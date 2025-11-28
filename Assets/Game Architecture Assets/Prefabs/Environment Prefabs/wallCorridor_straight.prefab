@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4141642102983463547}
   - component: {fileID: 4493032451207691457}
   - component: {fileID: 3072723143153737118}
+  - component: {fileID: 6633466053781058270}
   m_Layer: 0
   m_Name: wallCorridor_straight
   m_TagString: Untagged
@@ -69,7 +70,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5cf50b24110d77e42955e604cd8fe802, type: 2}
+  - {fileID: 2100000, guid: 1e065720b98195047bd440470656ffca, type: 2}
   - {fileID: 2100000, guid: 9724262729d4e614bb755435e4a38be9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -115,6 +116,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3950604445919378454, guid: df517994ca29b9941a06fcefa9d85fa0, type: 3}
+--- !u!114 &6633466053781058270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556397136510727764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c879870aac209b4381c786b2b4f6417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Paintable
+  myRenderer: {fileID: 4493032451207691457}
+  paintColour: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  enableSetColour: 1
 --- !u!1 &3481615002019190264
 GameObject:
   m_ObjectHideFlags: 0

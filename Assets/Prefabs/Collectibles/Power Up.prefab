@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 8dbc6fdf89061724bae5b3cb6aeeba6d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -262,7 +262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7293919710769388714, guid: bda93fdfcc8bff0468079fe628ff5f5b, type: 3}
       propertyPath: m_text
-      value: Try Power Up!
+      value: Power Up
       objectReference: {fileID: 0}
     - target: {fileID: 7293919710769388714, guid: bda93fdfcc8bff0468079fe628ff5f5b, type: 3}
       propertyPath: m_fontSize
