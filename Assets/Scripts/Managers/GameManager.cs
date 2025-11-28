@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float challengeCountdown = 120f;
     
     [Space(10)]
+    [SerializeField] private bool gameStarted = false;
     [SerializeField] private bool gameRunning;
     [SerializeField] private bool countdownRunning;
     [SerializeField] private bool debugStartGameOnStart = false;
@@ -34,9 +35,18 @@ public class GameManager : MonoBehaviour
     private float gameCountdownInitialNumber;
     private RoomKeeper roomOfChallenge;
 
+    #region Settings
+    private float mouseSensitivity = 1f;
+    #endregion
+
     public bool IsGameRunning
     {
         get { return gameRunning; }
+    }
+
+    public float MouseSensitivity
+    {
+        get { return mouseSensitivity; }
     }
 
     private void Awake()
@@ -87,7 +97,7 @@ public class GameManager : MonoBehaviour
                 introDirector.time = introDirector.duration;
             }
         }
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && gameStarted)
         {
             TogglePauseGame();
         }
@@ -168,18 +178,21 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        gameStarted = true;
         BootstrapManager.Instance.StartGame();
         InitializePostStart();
     }
 
     public void StartTest()
     {
+        gameStarted = true;
         BootstrapManager.Instance.StartTest();
         Invoke(nameof(InitializePostStart), 1f);
     }
 
     public void ReturnToMainMenu()
     {
+        gameStarted = false;
         BootstrapManager.Instance.ReturnToMainMenu();
         ResetAllManagers();
         Time.timeScale = 1f;
@@ -190,6 +203,11 @@ public class GameManager : MonoBehaviour
         BootstrapManager.Instance.RestartGame();
         ResetAllManagers();
         Time.timeScale = 1f;
+    }
+
+    public void SetSensitivity(float newSensitivity)
+    {
+        mouseSensitivity = newSensitivity;
     }
 
     private void ResetAllManagers()
